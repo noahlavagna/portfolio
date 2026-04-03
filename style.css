@@ -228,27 +228,24 @@ strong {
 
 @media (max-width: 768px) {
   .intro-turntable {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
   }
   .intro-vinyl {
-    width: 240px;
-    height: 240px;
+    width: 200px;
+    height: 200px;
+    left: 15px;
+    top: calc(50% - 100px);
   }
   .intro-vinyl .vinyl-label {
-    width: 65px;
-    height: 65px;
-  }
-  .tonearm-bar {
-    height: 130px;
-  }
-  .intro-dropzone {
-    left: 40px;
-    width: 160px;
-    height: 160px;
+    width: 55px;
+    height: 55px;
   }
   .intro-tonearm {
     right: 10px;
+    top: 20px;
+    width: 38px;
+    height: 170px;
   }
 }
 
@@ -560,38 +557,6 @@ strong {
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
 }
 
-/* Scroll indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.scroll-line {
-  width: 1px;
-  height: 60px;
-  background: var(--text-light);
-  position: relative;
-  overflow: hidden;
-}
-
-.scroll-line::after {
-  content: '';
-  position: absolute;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--text);
-  animation: scrollDown 2s ease-in-out infinite;
-}
-
-@keyframes scrollDown {
-  0% { top: -100%; }
-  50% { top: 0; }
-  100% { top: 100%; }
-}
 
 /* ===== SECTIONS ===== */
 .section {
