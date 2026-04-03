@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew install:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(pip3 install:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx --version)",
+      "Bash(php --version)",
+      "Bash(python3:*)",
+      "Bash(cp /Users/noah/Documents/perso/site/index.html /tmp/portfolio-site/)",
+      "Bash(cp /Users/noah/Documents/perso/site/style.css /tmp/portfolio-site/)",
+      "Bash(cp /Users/noah/Documents/perso/site/script.js /tmp/portfolio-site/)",
+      "Bash(cp -r /Users/noah/Documents/perso/site/assets/images/* /tmp/portfolio-site/assets/images/)",
+      "Bash(cp /Users/noah/Documents/perso/site/index.html /Users/noah/Documents/perso/site/style.css /Users/noah/Documents/perso/site/script.js /tmp/portfolio-site/)",
+      "Bash(cp /Users/noah/Documents/perso/site/assets/images/logo.png /Users/noah/Documents/perso/site/assets/images/chaine_screen.png /Users/noah/Documents/perso/site/assets/images/cannes_v1.png /tmp/portfolio-site/assets/images/)"
+    ]
+  }
+}

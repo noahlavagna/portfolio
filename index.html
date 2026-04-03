@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noah Lavagna — Portfolio 2025-2026</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- INTRO: Pose le diamant sur le vinyle -->
+  <div id="intro" class="intro">
+    <div class="intro-content">
+      <p class="intro-hint">Posez le diamant sur le vinyle</p>
+      <div class="intro-turntable">
+        <div class="intro-vinyl">
+          <div class="vinyl-label"><img src="assets/images/logo.png" alt="Logo" class="vinyl-logo"></div>
+          <div class="vinyl-groove groove-1"></div>
+          <div class="vinyl-groove groove-2"></div>
+          <div class="vinyl-groove groove-3"></div>
+          <div class="vinyl-groove groove-4"></div>
+        </div>
+        <svg class="intro-tonearm" id="intro-tonearm" viewBox="0 0 60 260" width="60" height="260">
+          <!-- Pivot -->
+          <circle cx="30" cy="18" r="14" fill="url(#pivotGrad)"/>
+          <!-- Arm bar -->
+          <rect x="28" y="18" width="4" height="200" rx="2" fill="#444"/>
+          <!-- Headshell -->
+          <rect x="21" y="215" width="18" height="13" rx="3" fill="#555"/>
+          <!-- Diamond -->
+          <polygon points="30,240 27,228 33,228" fill="#c44d2b"/>
+          <defs>
+            <radialGradient id="pivotGrad"><stop offset="0%" stop-color="#777"/><stop offset="100%" stop-color="#333"/></radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <p class="intro-skip">ou cliquez n'importe où pour entrer</p>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav hidden">
+    <a href="#hero" class="nav-logo">NL.</a>
+    <div class="nav-links">
+      <a href="#about">Qui suis-je</a>
+      <a href="#projects">Projets</a>
+      <a href="#personal">Créations</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu">
+    <a href="#about">Qui suis-je</a>
+    <a href="#projects">Projets</a>
+    <a href="#personal">Créations</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-subtitle">Portfolio 2025 — 2026</p>
+        <h1 class="hero-title">
+          <span class="line">Noah</span>
+          <span class="line">Lavagna</span>
+        </h1>
+        <p class="hero-desc">Création visuelle &middot; Montage vidéo &middot; Communication</p>
+        <a href="#about" class="hero-cta">Découvrir mon travail</a>
+      </div>
+      <div class="hero-vinyl">
+        <div class="vinyl-container">
+          <div class="vinyl-record">
+            <div class="vinyl-label">
+              <img src="assets/images/logo.png" alt="Logo" class="vinyl-logo">
+            </div>
+            <div class="vinyl-groove groove-1"></div>
+            <div class="vinyl-groove groove-2"></div>
+            <div class="vinyl-groove groove-3"></div>
+            <div class="vinyl-groove groove-4"></div>
+          </div>
+          <svg class="tonearm" viewBox="0 0 60 260" width="50" height="220">
+            <circle cx="30" cy="18" r="14" fill="url(#pivotGrad2)"/>
+            <rect x="28" y="18" width="4" height="200" rx="2" fill="#444"/>
+            <rect x="21" y="215" width="18" height="13" rx="3" fill="#555"/>
+            <polygon points="30,240 27,228 33,228" fill="#c44d2b"/>
+            <defs><radialGradient id="pivotGrad2"><stop offset="0%" stop-color="#777"/><stop offset="100%" stop-color="#333"/></radialGradient></defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="section-label">01</div>
+      <div class="about-grid">
+        <div class="about-image-wrap">
+          <div class="about-image">
+            <img src="assets/images/noah.jpg" alt="Noah Lavagna" loading="lazy">
+          </div>
+          <div class="about-vinyl-deco" aria-hidden="true">
+            <div class="mini-vinyl">
+              <div class="mini-vinyl-label"></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <h2 class="section-title">Qui suis-je<span class="accent"> ?</span></h2>
+          <p>Je m'appelle <strong>Noah Lavagna</strong>, et depuis tout petit, j'aime <strong>créer et partager mes centres d'intérêt.</strong></p>
+          <p>J'utilise les logiciels comme <strong>Affinity</strong> ou la suite <strong>Adobe</strong> pour expérimenter, apprendre et découvrir de nouvelles passions. J'ai ainsi pu créer <strong>plusieurs chaînes YouTube</strong>, où je m'efforce encore aujourd'hui de proposer le meilleur de moi-même à travers le <strong>montage vidéo, sonore et photo.</strong></p>
+          <p>Aujourd'hui, dans ma formation en BUT Techniques de Commercialisation, <strong>j'apprends à concevoir et à vendre une offre</strong> tout en mettant à profit <strong>mes qualités essentielles en communication et en création visuelle.</strong></p>
+          <div class="about-tags">
+            <span class="tag">Affinity Designer</span>
+            <span class="tag">Adobe Premiere</span>
+            <span class="tag">After Effects</span>
+            <span class="tag">Adobe Audition</span>
+            <span class="tag">Canva</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects - University -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="section-label">02</div>
+      <h2 class="section-title">Projets<br><span class="light">universitaires</span></h2>
+
+      <!-- Project 1: Cannes Cinema -->
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">01</span>
+          <h3 class="project-title">Cannes Cinéma</h3>
+          <span class="project-type">Affiche publicitaire</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Lors d'un projet de groupe, j'ai été chargé de <strong>créer une affiche publicitaire</strong> pour l'association Cannes Cinéma. L'objectif était de <strong>créer une affiche attirante</strong>, qui tape dans l'œil afin de promouvoir l'association au sein des étudiants du Campus Georges Méliès.</p>
+            <p>La <strong>première version</strong> a été réalisée au brouillon sur <strong>Canva</strong>. Les <strong>versions suivantes</strong> ont été réalisées au propre sur le logiciel <strong>Affinity Designer</strong>.</p>
+            <p>La version finale est beaucoup plus <strong>lisible, attrayante, et propre</strong>. Durant ce projet, j'ai pu développer <strong>ma capacité de création</strong>, mais aussi apprendre à <strong>respecter un cahier des charges</strong> ainsi que <strong>les demandes d'un client.</strong></p>
+          </div>
+          <div class="project-gallery">
+            <div class="gallery-main">
+              <img src="assets/images/cannes_v1.png" alt="Cannes Cinéma - Brouillon" loading="lazy">
+              <span class="gallery-caption">Brouillon</span>
+            </div>
+            <div class="gallery-main">
+              <img src="assets/images/cannes_final.png" alt="Cannes Cinéma - Version finale" loading="lazy">
+              <span class="gallery-caption">Version Finale</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage -->
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">02</span>
+          <h3 class="project-title">Stage — Agence Gazelle</h3>
+          <span class="project-type">Janvier - Février 2026</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>De <strong>janvier à février 2026</strong>, j'ai eu la chance de réaliser mon stage en entreprise de première année chez <strong>l'agence de communication Gazelle</strong>.</p>
+            <p>Durant mon stage, j'ai pu approcher de très près les métiers de la communication, mais cela m'a également permis de <strong>travailler des compétences de marketing digitale, ou encore de vente.</strong></p>
+          </div>
+          <div class="stage-skills">
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+              </div>
+              <span>Marketing digital</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <span>Communication</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+              </div>
+              <span>Vente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal Projects -->
+  <section id="personal" class="personal section">
+    <div class="container">
+      <div class="section-label">03</div>
+      <h2 class="section-title">Projets<br><span class="light">personnels</span></h2>
+
+      <!-- Miniatures -->
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">01</span>
+          <h3 class="project-title">Miniatures YouTube</h3>
+          <span class="project-type">Création digitale</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Étant <strong>passionné de création digitale</strong>, dans le cadre de ma chaîne YouTube, j'ai eu l'occasion de <strong>réaliser des miniatures afin de mettre en avant mon contenu</strong> et de maximiser le taux de clics par impression.</p>
+            <p>La création d'une miniature est très importante car c'est <strong>elle qui va directement jouer sur le référencement de la vidéo.</strong></p>
+          </div>
+          <div class="thumbnails-grid">
+            <div class="thumb-item" data-reveal>
+              <img src="assets/images/thumb_lastofus.PNG" alt="The Last of Us - Cinema" loading="lazy">
+              <div class="thumb-overlay">
+                <span>The Last of Us</span>
+              </div>
+            </div>
+            <div class="thumb-item" data-reveal>
+              <img src="assets/images/thumb_danielcaesar.png" alt="Daniel Caesar" loading="lazy">
+              <div class="thumb-overlay">
+                <span>Daniel Caesar</span>
+              </div>
+            </div>
+            <div class="thumb-item" data-reveal>
+              <img src="assets/images/thumb_weeknd.PNG" alt="The Weeknd - Impact" loading="lazy">
+              <div class="thumb-overlay">
+                <span>The Weeknd</span>
+              </div>
+            </div>
+            <div class="thumb-item" data-reveal>
+              <img src="assets/images/thumb_brunomars.png" alt="Bruno Mars" loading="lazy">
+              <div class="thumb-overlay">
+                <span>Bruno Mars</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Videos -->
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">02</span>
+          <h3 class="project-title">Montage Vidéo</h3>
+          <span class="project-type">CasperYTB</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>J'ai également pu réaliser <strong>le montage vidéo</strong> des vidéos dont j'ai fait les miniatures sur ma chaîne YouTube personnelle : <strong>CasperYTB</strong>.</p>
+            <p>J'aime apprendre à réaliser des effets, à comprendre un logiciel. Je monte sur <strong>Adobe Premiere</strong>, <strong>Adobe After Effects</strong>, et j'effectue mes mixages sonores sur <strong>Adobe Audition</strong>.</p>
+            <p>Cela m'a également permis de proposer mes services à d'autres YouTubers <strong>contre une rémunération.</strong></p>
+          </div>
+          <div class="stats-row">
+            <div class="stat-item">
+              <span class="stat-number" data-count="25000">0</span>
+              <span class="stat-label">vues sur YouTube</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="17">0</span>
+              <span class="stat-label">vidéos réalisées</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="801">0</span>
+              <span class="stat-label">abonnés</span>
+            </div>
+          </div>
+          <div class="video-gallery">
+            <img src="assets/images/chaine_screen.png" alt="Chaîne YouTube CasperYTB" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-vinyl" aria-hidden="true">
+          <div class="vinyl-record vinyl-contact">
+            <div class="vinyl-label">
+              <img src="assets/images/logo.png" alt="Logo" class="vinyl-logo">
+            </div>
+            <div class="vinyl-groove groove-1"></div>
+            <div class="vinyl-groove groove-2"></div>
+            <div class="vinyl-groove groove-3"></div>
+          </div>
+        </div>
+        <div class="contact-content">
+          <h2 class="section-title">Merci<span class="accent">.</span></h2>
+          <p class="contact-text">Intéressé par mon profil ? N'hésitez pas à me contacter.</p>
+          <div class="contact-links">
+            <a href="mailto:noah.lavagna@example.com" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Email
+            </a>
+            <a href="#" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="#" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+              YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Noah Lavagna &copy; 2025-2026</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
