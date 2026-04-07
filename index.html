@@ -7,7 +7,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/favicon.png">
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -58,8 +58,8 @@
     </a>
     <div class="nav-links">
       <a href="#about">Qui suis-je</a>
-      <a href="#projects">Projets</a>
-      <a href="#personal">Créations</a>
+      <a href="projets.html">Projets</a>
+      <a href="creations.html">Créations</a>
       <a href="#contact">Contact</a>
     </div>
     <button class="nav-toggle" aria-label="Menu">
@@ -72,8 +72,8 @@
   <!-- Mobile menu -->
   <div class="mobile-menu">
     <a href="#about">Qui suis-je</a>
-    <a href="#projects">Projets</a>
-    <a href="#personal">Créations</a>
+    <a href="projets.html">Projets</a>
+    <a href="creations.html">Créations</a>
     <a href="#contact">Contact</a>
   </div>
 
@@ -150,153 +150,34 @@
     </div>
   </section>
 
-  <!-- Projects - University -->
-  <section id="projects" class="projects section">
+  <!-- CTA vers les pages -->
+  <section class="cta-pages section">
     <div class="container">
-      <div class="section-label">02</div>
-      <h2 class="section-title">Projets<br><span class="light">universitaires</span></h2>
-
-      <!-- Project 1: Cannes Cinema -->
-      <div class="project-card" data-reveal>
-        <div class="project-header">
-          <span class="project-number">01</span>
-          <h3 class="project-title">Cannes Cinéma</h3>
-          <span class="project-type">Affiche publicitaire</span>
-        </div>
-        <div class="project-body">
-          <div class="project-description">
-            <p>Lors d'un projet de groupe, j'ai été chargé de <strong>créer une affiche publicitaire</strong> pour l'association Cannes Cinéma. L'objectif était de <strong>créer une affiche attirante</strong>, qui tape dans l'œil afin de promouvoir l'association au sein des étudiants du Campus Georges Méliès.</p>
-            <p>La <strong>première version</strong> a été réalisée au brouillon sur <strong>Canva</strong>. Les <strong>versions suivantes</strong> ont été réalisées au propre sur le logiciel <strong>Affinity Designer</strong>.</p>
-            <p>La version finale est beaucoup plus <strong>lisible, attrayante, et propre</strong>. Durant ce projet, j'ai pu développer <strong>ma capacité de création</strong>, mais aussi apprendre à <strong>respecter un cahier des charges</strong> ainsi que <strong>les demandes d'un client.</strong></p>
+      <div class="cta-pages-grid">
+        <a href="projets.html" class="cta-page-card" data-reveal>
+          <div class="cta-page-number">02</div>
+          <div class="cta-page-content">
+            <h3>Projets universitaires</h3>
+            <p>Cannes Cinéma, stage en agence…</p>
           </div>
-          <div class="project-gallery">
-            <div class="gallery-main">
-              <img src="assets/images/cannes_v1.png" alt="Cannes Cinéma - Brouillon" loading="lazy">
-              <span class="gallery-caption">Brouillon</span>
-            </div>
-            <div class="gallery-main">
-              <img src="assets/images/cannes_final.png" alt="Cannes Cinéma - Version finale" loading="lazy">
-              <span class="gallery-caption">Version Finale</span>
-            </div>
+          <svg class="cta-page-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="creations.html" class="cta-page-card" data-reveal>
+          <div class="cta-page-number">03</div>
+          <div class="cta-page-content">
+            <h3>Créations personnelles</h3>
+            <p>Miniatures YouTube, montage vidéo…</p>
           </div>
-        </div>
-      </div>
-
-      <!-- Stage -->
-      <div class="project-card" data-reveal>
-        <div class="project-header">
-          <span class="project-number">02</span>
-          <h3 class="project-title">Stage — Agence Gazelle</h3>
-          <span class="project-type">Janvier - Février 2026</span>
-        </div>
-        <div class="project-body">
-          <div class="project-description">
-            <p>De <strong>janvier à février 2026</strong>, j'ai eu la chance de réaliser mon stage en entreprise de première année chez <strong>l'agence de communication Gazelle</strong>.</p>
-            <p>Durant mon stage, j'ai pu approcher de très près les métiers de la communication, mais cela m'a également permis de <strong>travailler des compétences de marketing digitale, ou encore de vente.</strong></p>
+          <svg class="cta-page-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="cta-page-card" data-reveal>
+          <div class="cta-page-number">04</div>
+          <div class="cta-page-content">
+            <h3>Me contacter</h3>
+            <p>Email, LinkedIn, YouTube…</p>
           </div>
-          <div class="stage-skills">
-            <div class="skill-item">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-              </div>
-              <span>Marketing digital</span>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-              </div>
-              <span>Communication</span>
-            </div>
-            <div class="skill-item">
-              <div class="skill-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
-              </div>
-              <span>Vente</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Personal Projects -->
-  <section id="personal" class="personal section">
-    <div class="container">
-      <div class="section-label">03</div>
-      <h2 class="section-title">Projets<br><span class="light">personnels</span></h2>
-
-      <!-- Miniatures -->
-      <div class="project-card" data-reveal>
-        <div class="project-header">
-          <span class="project-number">01</span>
-          <h3 class="project-title">Miniatures YouTube</h3>
-          <span class="project-type">Création digitale</span>
-        </div>
-        <div class="project-body">
-          <div class="project-description">
-            <p>Étant <strong>passionné de création digitale</strong>, dans le cadre de ma chaîne YouTube, j'ai eu l'occasion de <strong>réaliser des miniatures afin de mettre en avant mon contenu</strong> et de maximiser le taux de clics par impression.</p>
-            <p>La création d'une miniature est très importante car c'est <strong>elle qui va directement jouer sur le référencement de la vidéo.</strong></p>
-          </div>
-          <div class="thumbnails-grid">
-            <a href="https://youtu.be/wFP7JL_aK-0?si=DUUVRddnKhNUs5X1" target="_blank" rel="noopener noreferrer" class="thumb-item" data-reveal>
-              <img src="assets/images/thumb_lastofus.png" alt="The Last of Us - Cinema" loading="lazy">
-              <div class="thumb-overlay">
-                <span>The Last of Us</span>
-              </div>
-            </a>
-            <div class="thumb-item" data-reveal>
-              <img src="assets/images/thumb_danielcaesar.png" alt="Daniel Caesar" loading="lazy">
-              <div class="thumb-overlay">
-                <span>Daniel Caesar</span>
-              </div>
-            </div>
-            <a href="https://youtu.be/YmpegrDO1Xk?si=PCngYcoLk6sn0sz4" target="_blank" rel="noopener noreferrer" class="thumb-item" data-reveal>
-              <img src="assets/images/thumb_weeknd.png" alt="The Weeknd - Impact" loading="lazy">
-              <div class="thumb-overlay">
-                <span>The Weeknd</span>
-              </div>
-            </a>
-            <a href="https://youtu.be/g_74ILMYESw?si=HgsHhmLV4qiBPm_b" target="_blank" rel="noopener noreferrer" class="thumb-item" data-reveal>
-              <img src="assets/images/thumb_brunomars.png" alt="Bruno Mars" loading="lazy">
-              <div class="thumb-overlay">
-                <span>Bruno Mars</span>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Videos -->
-      <div class="project-card" data-reveal>
-        <div class="project-header">
-          <span class="project-number">02</span>
-          <h3 class="project-title">Montage Vidéo</h3>
-          <span class="project-type">CasperYTB</span>
-        </div>
-        <div class="project-body">
-          <div class="project-description">
-            <p>J'ai également pu réaliser <strong>le montage vidéo</strong> des vidéos dont j'ai fait les miniatures sur ma chaîne YouTube personnelle : <strong>CasperYTB</strong>.</p>
-            <p>J'aime apprendre à réaliser des effets, à comprendre un logiciel. Je monte sur <strong>Adobe Premiere</strong>, <strong>Adobe After Effects</strong>, et j'effectue mes mixages sonores sur <strong>Adobe Audition</strong>.</p>
-            <p>Cela m'a également permis de proposer mes services à d'autres YouTubers <strong>contre une rémunération.</strong></p>
-          </div>
-          <div class="stats-row">
-            <div class="stat-item">
-              <span class="stat-number" data-count="25000">0</span>
-              <span class="stat-label">vues sur YouTube</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-count="17">0</span>
-              <span class="stat-label">vidéos réalisées</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number" data-count="602">0</span>
-              <span class="stat-label">abonnés</span>
-            </div>
-          </div>
-          <div class="video-gallery">
-            <img src="assets/images/chaine_screen.png" alt="Chaîne YouTube CasperYTB" loading="lazy">
-          </div>
-        </div>
+          <svg class="cta-page-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -323,11 +204,11 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
               Email
             </a>
-            <a href="https://www.linkedin.com/in/noahlavagna" class="contact-link">
+            <a href="https://www.linkedin.com/in/noahlavagna" target="_blank" rel="noopener noreferrer" class="contact-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
               LinkedIn
             </a>
-            <a href="https://www.youtube.com/CasperYTB" class="contact-link">
+            <a href="https://www.youtube.com/CasperYTB" target="_blank" rel="noopener noreferrer" class="contact-link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
               YouTube
             </a>
@@ -344,6 +225,7 @@
     </div>
   </footer>
 
+  <script src="page-transition.js"></script>
   <script src="script.js?v=16"></script>
 </body>
 </html>

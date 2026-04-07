@@ -77,9 +77,18 @@ const intro = document.getElementById('intro');
 const nav = document.querySelector('.nav');
 let introTriggered = false;
 
-function enterSite() {
+function enterSite(instant) {
   if (introTriggered) return;
   introTriggered = true;
+  sessionStorage.setItem('intro_done', '1');
+
+  if (instant) {
+    intro.classList.add('gone');
+    nav.classList.remove('hidden');
+    nav.classList.add('visible');
+    document.body.style.overflow = '';
+    return;
+  }
 
   intro.classList.add('playing');
 
@@ -95,8 +104,13 @@ function enterSite() {
   }, 2200);
 }
 
+// Si l'intro a déjà été vue dans cette session, on la saute
+if (sessionStorage.getItem('intro_done')) {
+  enterSite(true);
+}
+
 // Any click anywhere on the intro triggers it
-intro.addEventListener('click', enterSite);
+intro.addEventListener('click', () => enterSite(false));
 
 // ===== MUSIC NOTES BURST (CTA + nav links) =====
 (() => {
@@ -126,22 +140,27 @@ intro.addEventListener('click', enterSite);
   function attachBurst(el, opts = {}) {
     if (!el) return;
     el.addEventListener('click', (e) => {
-      e.preventDefault();
-      const rect = el.getBoundingClientRect();
-      const originX = rect.left + rect.width / 2;
-      const originY = rect.top + rect.height / 2;
-      spawnNotes(originX, originY, opts.count || 9, opts.sizeMin || 1.2, opts.sizeRange || 0.8);
-
       const href = el.getAttribute('href');
-      const target = href && href.startsWith('#') ? document.querySelector(href) : null;
-      setTimeout(() => {
-        if (!target) return;
-        if (lenis) {
-          lenis.scrollTo(target, { duration: 1.6 });
-        } else {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, opts.delay || 900);
+      const isAnchor = href && href.startsWith('#');
+
+      // Ne bloquer la navigation QUE pour les ancres (scroll interne)
+      if (isAnchor) e.preventDefault();
+
+      const rect = el.getBoundingClientRect();
+      spawnNotes(rect.left + rect.width / 2, rect.top + rect.height / 2, opts.count || 9, opts.sizeMin || 1.2, opts.sizeRange || 0.8);
+
+      if (isAnchor) {
+        const target = document.querySelector(href);
+        setTimeout(() => {
+          if (!target) return;
+          if (lenis) {
+            lenis.scrollTo(target, { duration: 1.6 });
+          } else {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, opts.delay || 900);
+      }
+      // Pour les liens de page (.html), laisser le navigateur gérer
     });
   }
 
@@ -184,7 +203,7 @@ intro.addEventListener('click', enterSite);
 
 // Keyboard shortcut
 document.addEventListener('keydown', (e) => {
-  if (!introTriggered) enterSite();
+  if (!introTriggered) enterSite(false);
 });
 
 // Prevent scroll while intro is visible

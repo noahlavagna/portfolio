@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Noah Lavagna</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+</head>
+<body>
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo" aria-label="Accueil Noah Lavagna">
+      <img src="assets/images/noah.jpg" alt="Noah Lavagna">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="creations.html">Créations</a>
+      <a href="contact.html" class="nav-active">Contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="creations.html">Créations</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Contact Section -->
+  <section class="contact section" style="min-height: 90vh; display: flex; align-items: center;">
+    <div class="container" style="width: 100%;">
+      <div class="contact-inner">
+        <div class="contact-vinyl" aria-hidden="true">
+          <div class="vinyl-record vinyl-contact">
+            <div class="vinyl-label">
+              <img src="assets/images/logo.png" alt="Logo" class="vinyl-logo">
+            </div>
+            <div class="vinyl-groove groove-1"></div>
+            <div class="vinyl-groove groove-2"></div>
+            <div class="vinyl-groove groove-3"></div>
+          </div>
+        </div>
+        <div class="contact-content">
+          <h1 class="section-title">Merci<span class="accent">.</span></h1>
+          <p class="contact-text">Intéressé par mon profil ? N'hésitez pas à me contacter.</p>
+          <div class="contact-links">
+            <a href="mailto:noah.lavagna@icloud.com" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              Email
+            </a>
+            <a href="https://www.linkedin.com/in/noahlavagna" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://www.youtube.com/CasperYTB" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.13C5.12 19.56 12 19.56 12 19.56s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+              YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>Noah Lavagna &copy; 2026</p>
+    </div>
+  </footer>
+
+  <script src="transitions.js"></script>
+  <script src="page.js"></script>
+</body>
+</html>
