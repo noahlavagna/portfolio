@@ -235,7 +235,7 @@ strong {
   top: 10px;
   transform-origin: 50% 6.92%;
   transform: rotate(-15deg);
-  transition: transform 1s cubic-bezier(0.34, 1.2, 0.64, 1);
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1);
   cursor: pointer;
   z-index: 2;
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
@@ -422,6 +422,66 @@ strong {
   overflow: hidden;
 }
 
+/* Warm static base — sober foundation */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 50%, rgba(196, 77, 43, 0.08), transparent 65%),
+    radial-gradient(ellipse 60% 80% at 10% 20%, rgba(26, 26, 26, 0.04), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Sound waves emanating from the vinyl */
+.hero-waves {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  width: 380px;
+  height: 380px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-waves span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  height: 380px;
+  margin-top: -190px;
+  margin-left: -190px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(196, 77, 43, 0.35);
+  opacity: 0;
+  animation: soundWave 5s ease-out infinite;
+  will-change: transform, opacity;
+}
+
+.hero-waves span:nth-child(1) { animation-delay: 0s; }
+.hero-waves span:nth-child(2) { animation-delay: 1.25s; }
+.hero-waves span:nth-child(3) { animation-delay: 2.5s; }
+.hero-waves span:nth-child(4) { animation-delay: 3.75s; }
+
+@keyframes soundWave {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+    border-color: rgba(196, 77, 43, 0.4);
+  }
+  15% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+    border-color: rgba(196, 77, 43, 0);
+  }
+}
+
 .hero-content {
   display: flex;
   align-items: center;
@@ -430,6 +490,8 @@ strong {
   margin: 0 auto;
   width: 100%;
   gap: 4rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-text {
@@ -536,13 +598,26 @@ strong {
 .vinyl-record::before {
   content: '';
   position: absolute;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.03) 50%, transparent 60%);
+  background:
+    conic-gradient(from 0deg,
+      transparent 0deg,
+      rgba(255, 255, 255, 0.08) 25deg,
+      rgba(255, 255, 255, 0.14) 45deg,
+      rgba(255, 255, 255, 0.06) 70deg,
+      transparent 110deg,
+      transparent 180deg,
+      rgba(255, 255, 255, 0.05) 220deg,
+      rgba(255, 255, 255, 0.10) 250deg,
+      transparent 290deg,
+      transparent 360deg);
+  pointer-events: none;
 }
+
 
 .vinyl-label {
   position: absolute;
@@ -596,6 +671,45 @@ strong {
   transform-origin: 50% 6.92%;
   transform: rotate(-25deg);
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  cursor: pointer;
+  transition: transform 1.3s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 2;
+}
+
+.tonearm.on-vinyl {
+  transform: rotate(15deg);
+}
+
+.vinyl-container.playing .vinyl-record {
+  animation: spin 4s linear infinite;
+}
+
+/* Burst pulse — subtle wave intensification when needle hits vinyl */
+.hero-waves.burst span {
+  animation: soundWaveBurst 1.6s ease-out;
+}
+
+.hero-waves.burst span:nth-child(1) { animation-delay: 0s; }
+.hero-waves.burst span:nth-child(2) { animation-delay: 0.12s; }
+.hero-waves.burst span:nth-child(3) { animation-delay: 0.24s; }
+.hero-waves.burst span:nth-child(4) { animation-delay: 0.36s; }
+
+@keyframes soundWaveBurst {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+    border-color: rgba(196, 77, 43, 0.7);
+    border-width: 2px;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+    border-color: rgba(196, 77, 43, 0);
+    border-width: 1px;
+  }
 }
 
 

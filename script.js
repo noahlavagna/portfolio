@@ -98,6 +98,34 @@ function enterSite() {
 // Any click anywhere on the intro triggers it
 intro.addEventListener('click', enterSite);
 
+// ===== HERO TONEARM CLICK TO PLAY =====
+(() => {
+  const tonearm = document.getElementById('hero-tonearm');
+  const vinylContainer = document.querySelector('.vinyl-container');
+  const waves = document.querySelector('.hero-waves');
+  if (!tonearm || !vinylContainer) return;
+
+  let isPlaying = false;
+
+  tonearm.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    isPlaying = !isPlaying;
+    vinylContainer.classList.toggle('playing', isPlaying);
+    tonearm.classList.toggle('on-vinyl', isPlaying);
+
+    if (isPlaying && waves) {
+      // Trigger the wave burst quickly so it feels responsive
+      setTimeout(() => {
+        waves.classList.remove('burst');
+        void waves.offsetWidth; // restart animation
+        waves.classList.add('burst');
+        setTimeout(() => waves.classList.remove('burst'), 2000);
+      }, 350);
+    }
+  });
+})();
+
 // Keyboard shortcut
 document.addEventListener('keydown', (e) => {
   if (!introTriggered) enterSite();

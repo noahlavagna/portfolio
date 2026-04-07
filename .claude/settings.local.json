@@ -16,7 +16,10 @@
       "Bash(cp /Users/noah/Documents/perso/site/assets/images/logo.png /Users/noah/Documents/perso/site/assets/images/chaine_screen.png /Users/noah/Documents/perso/site/assets/images/cannes_v1.png /tmp/portfolio-site/assets/images/)",
       "Bash(ls -la /Users/noah/Documents/perso/site/assets/images/thumb_*)",
       "Bash(cp /Users/noah/Documents/perso/site/index.html /tmp/portfolio-site/index.html)",
-      "Bash(cp /Users/noah/Documents/perso/site/style.css /tmp/portfolio-site/style.css)"
+      "Bash(cp /Users/noah/Documents/perso/site/style.css /tmp/portfolio-site/style.css)",
+      "Bash(cp /Users/noah/Documents/perso/site/style.css /private/tmp/portfolio-site/style.css)",
+      "Bash(cp /Users/noah/Documents/perso/site/index.html /private/tmp/portfolio-site/index.html)",
+      "Bash(cp /Users/noah/Documents/perso/site/script.js /private/tmp/portfolio-site/script.js)"
     ]
   }
 }
