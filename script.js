@@ -98,6 +98,62 @@ function enterSite() {
 // Any click anywhere on the intro triggers it
 intro.addEventListener('click', enterSite);
 
+// ===== MUSIC NOTES BURST (CTA + nav links) =====
+(() => {
+  const NOTES = ['♪', '♫', '♬', '♩', '♭'];
+
+  function spawnNotes(originX, originY, count = 9, sizeMin = 1.2, sizeRange = 0.8) {
+    for (let i = 0; i < count; i++) {
+      const note = document.createElement('span');
+      note.className = 'music-note';
+      note.textContent = NOTES[Math.floor(Math.random() * NOTES.length)];
+      const spread = (i - (count - 1) / 2) * 18 + (Math.random() * 16 - 8);
+      const r1 = (Math.random() * 30 - 15);
+      const r2 = r1 + (Math.random() * 60 - 30);
+      const size = sizeMin + Math.random() * sizeRange;
+      note.style.left = originX + 'px';
+      note.style.top = originY + 'px';
+      note.style.fontSize = size + 'rem';
+      note.style.setProperty('--mx', spread + 'px');
+      note.style.setProperty('--r1', r1 + 'deg');
+      note.style.setProperty('--r2', r2 + 'deg');
+      note.style.animationDelay = (i * 0.04) + 's';
+      document.body.appendChild(note);
+      setTimeout(() => note.remove(), 2000);
+    }
+  }
+
+  function attachBurst(el, opts = {}) {
+    if (!el) return;
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const rect = el.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+      spawnNotes(originX, originY, opts.count || 9, opts.sizeMin || 1.2, opts.sizeRange || 0.8);
+
+      const href = el.getAttribute('href');
+      const target = href && href.startsWith('#') ? document.querySelector(href) : null;
+      setTimeout(() => {
+        if (!target) return;
+        if (lenis) {
+          lenis.scrollTo(target, { duration: 1.6 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, opts.delay || 900);
+    });
+  }
+
+  // Hero CTA — full size burst
+  attachBurst(document.querySelector('.hero-cta'));
+
+  // Nav links — smaller, lighter burst
+  document.querySelectorAll('.nav-links a, .nav-logo').forEach((link) => {
+    attachBurst(link, { count: 6, sizeMin: 0.9, sizeRange: 0.5, delay: 700 });
+  });
+})();
+
 // ===== HERO TONEARM CLICK TO PLAY =====
 (() => {
   const tonearm = document.getElementById('hero-tonearm');
