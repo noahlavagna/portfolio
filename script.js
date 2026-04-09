@@ -206,8 +206,10 @@ document.addEventListener('keydown', (e) => {
   if (!introTriggered) enterSite(false);
 });
 
-// Prevent scroll while intro is visible
-document.body.style.overflow = 'hidden';
+// Prevent scroll while intro is visible (only if intro hasn't been seen yet)
+if (!sessionStorage.getItem('intro_done')) {
+  document.body.style.overflow = 'hidden';
+}
 
 // ===== NAV SCROLL EFFECT =====
 if (lenis) {

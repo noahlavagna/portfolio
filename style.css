@@ -1492,6 +1492,42 @@ body.is-leaving {
   pointer-events: none;
 }
 
+/* View Transitions API — smooth cross-document crossfade (no white flash)
+   Supported: Chrome/Edge 126+, Safari 18.2+. Firefox falls back to is-leaving fade. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.55s;
+  animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: vt-fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: vt-fade-in;
+}
+
+@keyframes vt-fade-out {
+  to { opacity: 0; transform: scale(0.985); }
+}
+
+@keyframes vt-fade-in {
+  from { opacity: 0; transform: scale(1.015); }
+}
+
+/* When the browser supports View Transitions, suppress the manual fade so we
+   don't double-animate (the browser snapshots the page; an in-progress fade
+   would be captured into the snapshot). */
+@supports (view-transition-name: none) {
+  body { animation: none; }
+  body.is-leaving { opacity: 1 !important; transition: none !important; pointer-events: auto; }
+}
+
 /* ===== INNER PAGES — PAGE HERO ===== */
 .page-hero {
   padding: 10rem 0 4rem;
