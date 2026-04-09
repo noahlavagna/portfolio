@@ -24,7 +24,8 @@
       "Bash(cp \"/Users/noah/Documents/perso/recrutement/Alternance/fichier/portfolio Noah Lavagna.pdf\" /Users/noah/Documents/perso/site/assets/files/portfolio-noah-lavagna.pdf)",
       "Bash(mkdir -p /private/tmp/portfolio-site/assets/files)",
       "Bash(cp /Users/noah/Documents/perso/site/assets/files/cv-noah-lavagna.pdf /private/tmp/portfolio-site/assets/files/)",
-      "Bash(cp /Users/noah/Documents/perso/site/assets/files/portfolio-noah-lavagna.pdf /private/tmp/portfolio-site/assets/files/)"
+      "Bash(cp /Users/noah/Documents/perso/site/assets/files/portfolio-noah-lavagna.pdf /private/tmp/portfolio-site/assets/files/)",
+      "Bash(ps -p 13564 -o command=)"
     ]
   }
 }
