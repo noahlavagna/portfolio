@@ -1033,6 +1033,36 @@ strong {
   font-size: 0.9rem;
 }
 
+/* Project / experience video link */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.75rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-link svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.project-link:hover {
+  background: #a83a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196, 77, 43, 0.28);
+}
+
 /* Thumbnails grid */
 .thumbnails-grid {
   display: grid;
@@ -1520,12 +1550,13 @@ body.is-leaving {
   from { opacity: 0; transform: scale(1.015); }
 }
 
-/* When the browser supports View Transitions, suppress the manual fade so we
-   don't double-animate (the browser snapshots the page; an in-progress fade
-   would be captured into the snapshot). */
-@supports (view-transition-name: none) {
-  body { animation: none; }
-  body.is-leaving { opacity: 1 !important; transition: none !important; pointer-events: auto; }
+/* Lorsque la VT API est dispo (classe ajoutée par page-transition.js), on
+   désactive le fondu manuel pour laisser le crossfade natif jouer seul. */
+html.has-vt body { animation: none; }
+html.has-vt body.is-leaving {
+  opacity: 1 !important;
+  transition: none !important;
+  pointer-events: auto;
 }
 
 /* ===== INNER PAGES — PAGE HERO ===== */
