@@ -1195,6 +1195,41 @@ strong {
   stroke: var(--bg);
 }
 
+/* Download buttons */
+.contact-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--text);
+  color: var(--bg);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.download-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.download-btn:hover {
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196, 77, 43, 0.25);
+}
+
 /* ===== FOOTER ===== */
 .footer {
   padding: 2rem 0;
@@ -1301,15 +1336,49 @@ strong {
   .hero-content {
     flex-direction: column;
     text-align: center;
+    align-items: center;
   }
 
   .hero-vinyl {
     order: -1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    transform: none !important;
+    animation: none !important;
+    opacity: 1 !important;
   }
 
   .vinyl-container {
     width: 200px;
     height: 200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Move sound waves inside vinyl container area on mobile by matching its position */
+  .hero-waves {
+    position: absolute;
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: auto;
+    margin: 0;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    /* Align vertically with the vinyl: hero is flex-column centered, vinyl is at top of hero-content */
+    pointer-events: none;
+  }
+
+  /* Hide waves on mobile to avoid alignment issues — vinyl alone is enough */
+  .hero-waves { display: none; }
+
+  /* Disable warm radial glow positioning that targets right side */
+  .hero::before {
+    background:
+      radial-gradient(ellipse 80% 40% at 50% 25%, rgba(196, 77, 43, 0.10), transparent 70%),
+      radial-gradient(ellipse 60% 60% at 50% 80%, rgba(26, 26, 26, 0.04), transparent 70%);
   }
 
   .vinyl-record {

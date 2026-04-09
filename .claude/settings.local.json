@@ -19,7 +19,12 @@
       "Bash(cp /Users/noah/Documents/perso/site/style.css /tmp/portfolio-site/style.css)",
       "Bash(cp /Users/noah/Documents/perso/site/style.css /private/tmp/portfolio-site/style.css)",
       "Bash(cp /Users/noah/Documents/perso/site/index.html /private/tmp/portfolio-site/index.html)",
-      "Bash(cp /Users/noah/Documents/perso/site/script.js /private/tmp/portfolio-site/script.js)"
+      "Bash(cp /Users/noah/Documents/perso/site/script.js /private/tmp/portfolio-site/script.js)",
+      "Bash(cp \"/Users/noah/Documents/perso/recrutement/Alternance/fichier/CV Noah Lavagna.pdf\" /Users/noah/Documents/perso/site/assets/files/cv-noah-lavagna.pdf)",
+      "Bash(cp \"/Users/noah/Documents/perso/recrutement/Alternance/fichier/portfolio Noah Lavagna.pdf\" /Users/noah/Documents/perso/site/assets/files/portfolio-noah-lavagna.pdf)",
+      "Bash(mkdir -p /private/tmp/portfolio-site/assets/files)",
+      "Bash(cp /Users/noah/Documents/perso/site/assets/files/cv-noah-lavagna.pdf /private/tmp/portfolio-site/assets/files/)",
+      "Bash(cp /Users/noah/Documents/perso/site/assets/files/portfolio-noah-lavagna.pdf /private/tmp/portfolio-site/assets/files/)"
     ]
   }
 }
