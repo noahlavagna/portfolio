@@ -25,11 +25,20 @@ const isTouch    = window.matchMedia('(hover: none)').matches;
 
 if (!isTouch && cursorDot && cursorRing) {
   document.body.classList.add('has-custom-cursor');
-  let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-  let ringX = mouseX, ringY = mouseY;
+  cursorDot.style.opacity = '0';
+  cursorRing.style.opacity = '0';
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+  let hasMoved = false;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX; mouseY = e.clientY;
+    if (!hasMoved) {
+      hasMoved = true;
+      ringX = mouseX; ringY = mouseY;
+      cursorDot.style.opacity = '1';
+      cursorRing.style.opacity = '1';
+    }
     cursorDot.style.transform = `translate(${mouseX}px,${mouseY}px) translate(-50%,-50%)`;
   });
 
