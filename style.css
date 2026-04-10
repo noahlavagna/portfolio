@@ -1559,6 +1559,182 @@ html.has-vt body.is-leaving {
   pointer-events: auto;
 }
 
+/* ===== VINYL AUDIO WIDGET ===== */
+.vinyl-widget {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.85rem 0.5rem 0.5rem;
+  background: rgba(26, 26, 26, 0.88);
+  border-radius: 50px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: widget-appear 0.5s ease 0.8s forwards;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.vinyl-widget.hidden-by-intro {
+  opacity: 0 !important;
+  transform: translateY(20px) !important;
+  animation: none;
+  pointer-events: none;
+}
+
+@keyframes widget-appear {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.vinyl-widget-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #fff;
+}
+
+.vinyl-widget-disc {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #1a1a1a 0deg, #2a2a2a 30deg, #1a1a1a 60deg,
+    #2a2a2a 90deg, #1a1a1a 120deg, #2a2a2a 150deg,
+    #1a1a1a 180deg, #2a2a2a 210deg, #1a1a1a 240deg,
+    #2a2a2a 270deg, #1a1a1a 300deg, #2a2a2a 330deg,
+    #1a1a1a 360deg
+  );
+  border: 2px solid #333;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.vinyl-widget.is-playing .vinyl-widget-disc {
+  animation: spin-vinyl 2.5s linear infinite;
+}
+
+@keyframes spin-vinyl {
+  to { transform: rotate(360deg); }
+}
+
+.vinyl-widget-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+}
+
+.vinyl-widget-groove {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(255,255,255,0.06);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.vinyl-widget-groove.g2 {
+  width: 26px;
+  height: 26px;
+}
+
+.vinyl-widget-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+/* Icône play / pause toggle */
+.vinyl-widget .icon-pause { display: none; }
+.vinyl-widget.is-playing .icon-play { display: none; }
+.vinyl-widget.is-playing .icon-pause { display: block; }
+
+.vinyl-widget-text {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+/* ===== VINYL TOAST (easter egg) ===== */
+.vinyl-toast {
+  position: fixed;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(26, 26, 26, 0.9);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.55rem 1.2rem;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 950;
+}
+
+.vinyl-toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ===== CURSEUR DIAMANT SUR ÉLÉMENTS VINYLE ===== */
+body.cursor-diamond .cursor-dot {
+  width: 0;
+  height: 0;
+  background: transparent !important;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid var(--accent);
+  border-radius: 0 !important;
+}
+
+body.cursor-diamond .cursor-ring {
+  border-color: var(--accent) !important;
+  opacity: 0.4;
+}
+
+/* Mobile : widget plus compact */
+@media (max-width: 768px) {
+  .vinyl-widget {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.7rem 0.4rem 0.4rem;
+  }
+  .vinyl-widget-text { display: none; }
+  .vinyl-widget-disc { width: 28px; height: 28px; }
+  .vinyl-widget-label { width: 8px; height: 8px; }
+  .vinyl-widget-groove { width: 16px; height: 16px; }
+  .vinyl-widget-groove.g2 { width: 22px; height: 22px; }
+}
+
 /* ===== INNER PAGES — PAGE HERO ===== */
 .page-hero {
   padding: 10rem 0 4rem;

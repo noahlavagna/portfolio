@@ -189,11 +189,16 @@ intro.addEventListener('click', () => enterSite(false));
     vinylContainer.classList.toggle('playing', isPlaying);
     tonearm.classList.toggle('on-vinyl', isPlaying);
 
+    // Sync audio widget
+    if (window.vinylAudio) {
+      if (isPlaying) window.vinylAudio.play();
+      else window.vinylAudio.pause();
+    }
+
     if (isPlaying && waves) {
-      // Trigger the wave burst quickly so it feels responsive
       setTimeout(() => {
         waves.classList.remove('burst');
-        void waves.offsetWidth; // restart animation
+        void waves.offsetWidth;
         waves.classList.add('burst');
         setTimeout(() => waves.classList.remove('burst'), 2000);
       }, 350);
