@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>OG Generator</title></head>
+<body>
+<canvas id="c" width="1200" height="630"></canvas>
+<script>
+const c = document.getElementById('c');
+const ctx = c.getContext('2d');
+
+// Background
+ctx.fillStyle = '#f2ece4';
+ctx.fillRect(0, 0, 1200, 630);
+
+// Vinyl disc (right side)
+const cx = 850, cy = 315, r = 200;
+ctx.save();
+
+// Disc shadow
+ctx.beginPath();
+ctx.arc(cx + 6, cy + 6, r, 0, Math.PI * 2);
+ctx.fillStyle = 'rgba(0,0,0,0.1)';
+ctx.fill();
+
+// Disc
+ctx.beginPath();
+ctx.arc(cx, cy, r, 0, Math.PI * 2);
+ctx.fillStyle = '#1a1a1a';
+ctx.fill();
+
+// Grooves
+for (let i = 1; i <= 6; i++) {
+  ctx.beginPath();
+  ctx.arc(cx, cy, r * (0.35 + i * 0.1), 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+}
+
+// Label
+ctx.beginPath();
+ctx.arc(cx, cy, r * 0.28, 0, Math.PI * 2);
+ctx.fillStyle = '#c44d2b';
+ctx.fill();
+
+// Center hole
+ctx.beginPath();
+ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+ctx.fillStyle = '#1a1a1a';
+ctx.fill();
+
+ctx.restore();
+
+// Text
+ctx.fillStyle = '#1a1a1a';
+ctx.font = 'bold 64px "Inter", "Helvetica Neue", sans-serif';
+ctx.fillText('Noah', 80, 240);
+ctx.fillText('Lavagna', 80, 310);
+
+ctx.fillStyle = '#666';
+ctx.font = '500 22px "Inter", "Helvetica Neue", sans-serif';
+ctx.fillText('PORTFOLIO 2025 — 2026', 82, 190);
+
+ctx.fillStyle = '#888';
+ctx.font = '400 20px "Inter", "Helvetica Neue", sans-serif';
+ctx.fillText('Création visuelle · Montage vidéo · Communication', 82, 380);
+
+// Accent bar
+ctx.fillStyle = '#c44d2b';
+ctx.fillRect(82, 340, 60, 4);
+
+// Download
+const a = document.createElement('a');
+a.href = c.toDataURL('image/png');
+a.download = 'og-preview.png';
+a.click();
+</script>
+</body>
+</html>

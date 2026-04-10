@@ -21,7 +21,7 @@
   function tryLoadFile() {
     audioEl = new Audio(AUDIO_FILE);
     audioEl.loop = true;
-    audioEl.volume = 0.45;
+    audioEl.volume = 0.12;
     audioEl.preload = 'auto';
     audioEl.addEventListener('canplaythrough', () => { audioReady = true; }, { once: true });
     audioEl.addEventListener('error', () => { audioEl = null; audioReady = false; });
@@ -89,7 +89,7 @@
     const { master } = ensureCrackle();
     if (audioCtx.state === 'suspended') audioCtx.resume();
     master.gain.cancelScheduledValues(audioCtx.currentTime);
-    master.gain.linearRampToValueAtTime(0.7, audioCtx.currentTime + 0.4);
+    master.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.4);
   }
 
   function pause() {
@@ -196,8 +196,8 @@
       const obs = new MutationObserver(() => {
         if (intro.classList.contains('leaving') || intro.classList.contains('gone')) {
           widget.classList.remove('hidden-by-intro');
-          // Démarrage automatique de l'audio quand l'utilisateur pose le diamant
-          if (!isPlaying) play();
+          // On ne lance PAS l'audio automatiquement — l'utilisateur doit
+          // cliquer sur le tonearm ou le widget pour déclencher la lecture.
           obs.disconnect();
         }
       });
