@@ -1352,6 +1352,60 @@ strong {
     width: 80px;
     height: 80px;
   }
+
+  .hero-vinyl {
+    right: -2rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablette paysage / petit laptop */
+@media (max-width: 900px) {
+  .hero-text h1 {
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+  }
+
+  .hero-vinyl {
+    right: -3rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .thumbnails-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stage-skills {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .project-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-links {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
