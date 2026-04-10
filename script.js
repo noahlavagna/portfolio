@@ -194,18 +194,10 @@ intro.addEventListener('click', () => enterSite(false));
 
   let isPlaying = false;
 
-  tonearm.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    isPlaying = !isPlaying;
+  function setTonearm(playing) {
+    isPlaying = playing;
     vinylContainer.classList.toggle('playing', isPlaying);
     tonearm.classList.toggle('on-vinyl', isPlaying);
-
-    // Sync audio widget
-    if (window.vinylAudio) {
-      if (isPlaying) window.vinylAudio.play();
-      else window.vinylAudio.pause();
-    }
 
     if (isPlaying && waves) {
       setTimeout(() => {
@@ -215,7 +207,22 @@ intro.addEventListener('click', () => enterSite(false));
         setTimeout(() => waves.classList.remove('burst'), 2000);
       }, 350);
     }
+  }
+
+  tonearm.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setTonearm(!isPlaying);
+
+    // Sync audio widget
+    if (window.vinylAudio) {
+      if (isPlaying) window.vinylAudio.play();
+      else window.vinylAudio.pause();
+    }
   });
+
+  // Allow the audio widget to sync the tonearm
+  window.syncTonearm = setTonearm;
 })();
 
 // Keyboard shortcut

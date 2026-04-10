@@ -32,7 +32,11 @@
       "Bash(rm -rf /tmp/portfolio-site/projets.html /tmp/portfolio-site/experience.html /tmp/portfolio-site/creations.html /tmp/portfolio-site/contact.html)",
       "Bash(mkdir -p /tmp/portfolio-site/__TRACKED_VAR__)",
       "Bash(cp __TRACKED_VAR__/index.html /tmp/portfolio-site/__TRACKED_VAR__/index.html)",
-      "Bash(cp index.html style.css script.js page.js page-transition.js vinyl-audio.js favicon-anim.js /tmp/portfolio-site/)"
+      "Bash(cp index.html style.css script.js page.js page-transition.js vinyl-audio.js favicon-anim.js /tmp/portfolio-site/)",
+      "Bash(rm -rf /tmp/portfolio-site/experience /tmp/portfolio-site/experiences)",
+      "Bash(mkdir -p /tmp/portfolio-site/experiences)",
+      "Bash(cp experiences/index.html /tmp/portfolio-site/experiences/)",
+      "Bash(cp index.html /tmp/portfolio-site/)"
     ]
   }
 }

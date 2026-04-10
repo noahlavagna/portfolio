@@ -83,6 +83,7 @@
     }
     isPlaying = true;
     updateUI();
+    if (window.syncTonearm) window.syncTonearm(true);
   }
 
   function useFallback() {
@@ -101,6 +102,7 @@
     }
     isPlaying = false;
     updateUI();
+    if (window.syncTonearm) window.syncTonearm(false);
   }
 
   function toggle() {

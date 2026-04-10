@@ -151,6 +151,11 @@ strong {
   display: none;
 }
 
+/* Intro déjà vue — masquer instantanément (classe posée dans <head> avant le rendu) */
+html.intro-done .intro {
+  display: none;
+}
+
 .intro-content {
   text-align: center;
 }
