@@ -1604,13 +1604,16 @@ body.is-leaving {
   from { opacity: 0; transform: scale(1.015); }
 }
 
-/* Lorsque la VT API est dispo (classe ajoutée par page-transition.js), on
-   désactive le fondu manuel pour laisser le crossfade natif jouer seul. */
-html.has-vt body { animation: none; }
-html.has-vt body.is-leaving {
-  opacity: 1 !important;
-  transition: none !important;
-  pointer-events: auto;
+/* Lorsque la VT API est dispo, on désactive le fondu manuel pour laisser
+   le crossfade natif jouer seul. Détection via @supports pour agir avant
+   le JS (évite le flash d'opacité 0 pendant le chargement). */
+@supports (view-transition-name: none) {
+  body { animation: none !important; }
+  body.is-leaving {
+    opacity: 1 !important;
+    transition: none !important;
+    pointer-events: auto;
+  }
 }
 
 /* ===== VINYL AUDIO WIDGET ===== */

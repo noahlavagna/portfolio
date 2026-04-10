@@ -28,7 +28,11 @@
       "Bash(ps -p 13564 -o command=)",
       "Bash(wc -l /Users/noah/Documents/perso/site/*.html)",
       "Bash(grep -l \"script.js\" /Users/noah/Documents/perso/site/*.html)",
-      "Bash(ls /Users/noah/Documents/perso/site/*.js)"
+      "Bash(ls /Users/noah/Documents/perso/site/*.js)",
+      "Bash(rm -rf /tmp/portfolio-site/projets.html /tmp/portfolio-site/experience.html /tmp/portfolio-site/creations.html /tmp/portfolio-site/contact.html)",
+      "Bash(mkdir -p /tmp/portfolio-site/__TRACKED_VAR__)",
+      "Bash(cp __TRACKED_VAR__/index.html /tmp/portfolio-site/__TRACKED_VAR__/index.html)",
+      "Bash(cp index.html style.css script.js page.js page-transition.js vinyl-audio.js favicon-anim.js /tmp/portfolio-site/)"
     ]
   }
 }
