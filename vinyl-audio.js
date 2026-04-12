@@ -74,10 +74,48 @@
     return crackleNodes;
   }
 
-  // ----- PLAY / PAUSE -----
+  // ----- PLAY / PAUSE avec fade in/out -----
+  const TARGET_VOLUME = 0.06;
+  const FADE_IN = 1.2;   // secondes
+  const FADE_OUT = 0.8;  // secondes
+  let fadeInterval = null;
+
+  function fadeAudioIn() {
+    if (!audioEl) return;
+    audioEl.volume = 0;
+    audioEl.play().catch(() => useFallback());
+    clearInterval(fadeInterval);
+    const step = TARGET_VOLUME / (FADE_IN * 60);
+    fadeInterval = setInterval(() => {
+      if (audioEl.volume + step >= TARGET_VOLUME) {
+        audioEl.volume = TARGET_VOLUME;
+        clearInterval(fadeInterval);
+        fadeInterval = null;
+      } else {
+        audioEl.volume += step;
+      }
+    }, 1000 / 60);
+  }
+
+  function fadeAudioOut() {
+    if (!audioEl || audioEl.paused) return;
+    clearInterval(fadeInterval);
+    const step = audioEl.volume / (FADE_OUT * 60);
+    fadeInterval = setInterval(() => {
+      if (audioEl.volume - step <= 0) {
+        audioEl.volume = 0;
+        audioEl.pause();
+        clearInterval(fadeInterval);
+        fadeInterval = null;
+      } else {
+        audioEl.volume -= step;
+      }
+    }, 1000 / 60);
+  }
+
   function play() {
     if (audioReady && audioEl) {
-      audioEl.play().catch(() => useFallback());
+      fadeAudioIn();
     } else {
       useFallback();
     }
@@ -89,15 +127,15 @@
     const { master } = ensureCrackle();
     if (audioCtx.state === 'suspended') audioCtx.resume();
     master.gain.cancelScheduledValues(audioCtx.currentTime);
-    master.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 0.4);
+    master.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + FADE_IN);
   }
 
   function pause() {
-    if (audioEl && !audioEl.paused) audioEl.pause();
+    if (audioEl && !audioEl.paused) fadeAudioOut();
     if (crackleNodes) {
       const { master } = crackleNodes;
       master.gain.cancelScheduledValues(audioCtx.currentTime);
-      master.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.3);
+      master.gain.linearRampToValueAtTime(0, audioCtx.currentTime + FADE_OUT);
     }
     isPlaying = false;
     updateUI();
@@ -111,27 +149,39 @@
   function buildWidget() {
     if (widget) return;
     widget = document.createElement('div');
-    widget.className = 'vinyl-widget';
+    widget.className = 'vinyl-widget widget-entering';
     widget.setAttribute('aria-label', 'Lecteur audio');
     widget.innerHTML = `
-      <button class="vinyl-widget-toggle" type="button" aria-label="Lecture / Pause">
-        <span class="vinyl-widget-disc">
-          <span class="vinyl-widget-label"></span>
-          <span class="vinyl-widget-groove"></span>
-          <span class="vinyl-widget-groove g2"></span>
-        </span>
+      <span class="vinyl-widget-disc">
+        <span class="vinyl-widget-label"></span>
+        <span class="vinyl-widget-groove"></span>
+        <span class="vinyl-widget-groove g2"></span>
+      </span>
+      <span class="vinyl-widget-icons">
         <svg class="vinyl-widget-icon icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="7 4 20 12 7 20"/></svg>
         <svg class="vinyl-widget-icon icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
-      </button>
+      </span>
       <span class="vinyl-widget-text">Vinyle</span>
     `;
+    widget.setAttribute('role', 'button');
+    widget.setAttribute('tabindex', '0');
     document.body.appendChild(widget);
+    // Fade in après un court délai
+    setTimeout(function () { widget.classList.remove('widget-entering'); }, 800);
     discEl = widget.querySelector('.vinyl-widget-disc');
-    toggleBtn = widget.querySelector('.vinyl-widget-toggle');
-    toggleBtn.addEventListener('click', function () {
-      // Si on est sur la home avec le tonearm, passer par syncTonearm pour le délai
+    // Tout le widget est clicable
+    widget.addEventListener('click', function () {
+      // Text swap : disparaît, change, réapparaît
+      var txt = widget.querySelector('.vinyl-widget-text');
+      txt.classList.add('text-swap');
+      setTimeout(function () {
+        txt.classList.remove('text-swap');
+      }, 300);
+
       if (window.syncTonearm) {
-        window.syncTonearm(!isPlaying);
+        var tonearmOn = document.getElementById('hero-tonearm');
+        var currentlyOn = tonearmOn && tonearmOn.classList.contains('on-vinyl');
+        window.syncTonearm(!currentlyOn);
       } else {
         toggle();
       }
@@ -166,9 +216,15 @@
     if (e.key.length !== 1) return;
     typed = (typed + e.key.toLowerCase()).slice(-4);
     if (typed === 'play') {
-      if (window.syncTonearm) { window.syncTonearm(!isPlaying); }
-      else { toggle(); }
-      showToast(!isPlaying ? '♪ Lecture' : '⏸ Pause');
+      if (window.syncTonearm) {
+        var arm = document.getElementById('hero-tonearm');
+        var on = arm && arm.classList.contains('on-vinyl');
+        window.syncTonearm(!on);
+        showToast(on ? '⏸ Pause' : '♪ Lecture');
+      } else {
+        toggle();
+        showToast(isPlaying ? '♪ Lecture' : '⏸ Pause');
+      }
       typed = '';
     }
   });

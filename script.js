@@ -267,6 +267,14 @@ window.introSpin = (function () {
     tonearm.classList.toggle('on-vinyl', isPlaying);
     vinylContainer.classList.toggle('playing', isPlaying);
 
+    // Mettre à jour l'UI du widget immédiatement (feedback visuel)
+    var w = document.querySelector('.vinyl-widget');
+    if (w) {
+      w.classList.toggle('is-playing', isPlaying);
+      var txt = w.querySelector('.vinyl-widget-text');
+      if (txt) txt.textContent = isPlaying ? 'En lecture' : 'Vinyle';
+    }
+
     clearTimeout(delayTimer);
 
     if (isPlaying) {

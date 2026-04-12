@@ -568,6 +568,9 @@ html.intro-done .intro {
   position: relative;
   width: 380px;
   height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .vinyl-record {
@@ -575,7 +578,6 @@ html.intro-done .intro {
   height: 360px;
   border-radius: 50%;
   will-change: transform;
-  contain: layout paint;
   background: radial-gradient(
     circle,
     #1a1a1a 0%,
@@ -1519,7 +1521,11 @@ html.intro-done .intro {
   }
 
   .tonearm {
-    display: none;
+    display: block;
+    width: 25px;
+    height: 110px;
+    right: 0px;
+    top: -8px;
   }
 
   .hero-cta {
@@ -1666,10 +1672,32 @@ body.is-leaving {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    padding 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+    background 0.5s ease,
+    box-shadow 0.5s ease,
+    opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.vinyl-widget.is-playing {
+  padding: 0.55rem 1rem 0.55rem 0.55rem;
+  background: rgba(26, 26, 26, 0.92);
+  box-shadow: 0 4px 28px rgba(0,0,0,0.22), 0 0 0 1px rgba(196, 77, 43, 0.12);
+  transform: scale(1.04);
+}
+
+.vinyl-widget.widget-entering {
   opacity: 0;
-  transform: translateY(12px);
-  animation: widget-appear 0.5s ease 0.8s forwards;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(0.9) translateY(10px);
+}
+
+.vinyl-widget:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
 }
 
 .vinyl-widget.hidden-by-intro {
@@ -1679,9 +1707,7 @@ body.is-leaving {
   pointer-events: none;
 }
 
-@keyframes widget-appear {
-  to { opacity: 1; transform: translateY(0); }
-}
+
 
 .vinyl-widget-toggle {
   display: flex;
@@ -1692,6 +1718,8 @@ body.is-leaving {
   cursor: pointer;
   padding: 0;
   color: #fff;
+  position: relative;
+  transition: transform 0.15s ease;
 }
 
 .vinyl-widget-disc {
@@ -1748,17 +1776,30 @@ body.is-leaving {
   height: 26px;
 }
 
-.vinyl-widget-icon {
+.vinyl-widget-icons {
+  position: relative;
   width: 14px;
   height: 14px;
   flex-shrink: 0;
-  color: #fff;
 }
 
-/* Icône play / pause toggle */
-.vinyl-widget .icon-pause { display: none; }
-.vinyl-widget.is-playing .icon-play { display: none; }
-.vinyl-widget.is-playing .icon-pause { display: block; }
+.vinyl-widget-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  color: #fff;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+/* Play visible par défaut, pause cachée */
+.vinyl-widget .icon-play  { opacity: 1; transform: scale(1); }
+.vinyl-widget .icon-pause { opacity: 0; transform: scale(0.6); }
+
+/* En lecture : play cachée, pause visible */
+.vinyl-widget.is-playing .icon-play  { opacity: 0; transform: scale(0.6); }
+.vinyl-widget.is-playing .icon-pause { opacity: 1; transform: scale(1); }
 
 .vinyl-widget-text {
   font-family: var(--font-body);
@@ -1768,6 +1809,12 @@ body.is-leaving {
   text-transform: uppercase;
   color: rgba(255,255,255,0.7);
   white-space: nowrap;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.vinyl-widget-text.text-swap {
+  opacity: 0;
+  transform: translateY(3px);
 }
 
 /* ===== VINYL TOAST (easter egg) ===== */
