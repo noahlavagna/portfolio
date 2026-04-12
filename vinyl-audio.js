@@ -83,7 +83,6 @@
     }
     isPlaying = true;
     updateUI();
-    if (window.syncTonearm) window.syncTonearm(true);
   }
 
   function useFallback() {
@@ -102,7 +101,6 @@
     }
     isPlaying = false;
     updateUI();
-    if (window.syncTonearm) window.syncTonearm(false);
   }
 
   function toggle() {
@@ -130,7 +128,14 @@
     document.body.appendChild(widget);
     discEl = widget.querySelector('.vinyl-widget-disc');
     toggleBtn = widget.querySelector('.vinyl-widget-toggle');
-    toggleBtn.addEventListener('click', toggle);
+    toggleBtn.addEventListener('click', function () {
+      // Si on est sur la home avec le tonearm, passer par syncTonearm pour le délai
+      if (window.syncTonearm) {
+        window.syncTonearm(!isPlaying);
+      } else {
+        toggle();
+      }
+    });
   }
 
   function updateUI() {
@@ -161,8 +166,9 @@
     if (e.key.length !== 1) return;
     typed = (typed + e.key.toLowerCase()).slice(-4);
     if (typed === 'play') {
-      toggle();
-      showToast(isPlaying ? '♪ Lecture' : '⏸ Pause');
+      if (window.syncTonearm) { window.syncTonearm(!isPlaying); }
+      else { toggle(); }
+      showToast(!isPlaying ? '♪ Lecture' : '⏸ Pause');
       typed = '';
     }
   });

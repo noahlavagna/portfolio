@@ -103,6 +103,9 @@ function enterSite(instant) {
   }
 
   intro.classList.add('playing');
+  setTimeout(function () {
+    if (window.introSpin) window.introSpin.play();
+  }, 1100);
 
   setTimeout(() => {
     intro.classList.add('leaving');
@@ -185,6 +188,69 @@ intro.addEventListener('click', () => enterSite(false));
   });
 })();
 
+// ===== VINYL SPIN CONTROLLER (acceleration / deceleration) =====
+function createVinylSpin(discEl, logoEl, targetSpeed) {
+  // targetSpeed = degrés par seconde à pleine vitesse
+  var ACCEL = targetSpeed * 0.8;   // accélération (deg/s²)
+  var DECEL = targetSpeed * 1.2;   // décélération plus vive
+  var speed = 0;
+  var angle = 0;
+  var playing = false;
+  var timer = null;
+  var lastTime = 0;
+  var INTERVAL = 16; // ~60fps
+
+  function tick() {
+    var now = performance.now();
+    var dt = (now - lastTime) / 1000;
+    if (dt > 0.1) dt = 0.016; // clamp si tab était inactive
+    lastTime = now;
+
+    if (playing) {
+      speed = Math.min(speed + ACCEL * dt, targetSpeed);
+    } else {
+      speed = Math.max(speed - DECEL * dt, 0);
+    }
+
+    if (speed > 0.05) {
+      angle = (angle + speed * dt) % 360;
+      discEl.style.transform = 'rotate(' + angle + 'deg)';
+    } else {
+      speed = 0;
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function startLoop() {
+    if (timer) return;
+    lastTime = performance.now();
+    timer = setInterval(tick, INTERVAL);
+  }
+
+  return {
+    play: function ()  { playing = true;  startLoop(); },
+    pause: function () { playing = false; },
+    get isPlaying() { return playing; }
+  };
+}
+
+// ----- Hero vinyl spin -----
+window.heroSpin = (function () {
+  var disc = document.querySelector('.vinyl-container .vinyl-record');
+  var logo = document.querySelector('.vinyl-container .vinyl-logo');
+  if (!disc) return null;
+  return createVinylSpin(disc, logo, 45); // 45 deg/s = 1 tour en 8s
+})();
+
+// ----- Intro vinyl spin -----
+window.introSpin = (function () {
+  var disc = document.querySelector('.intro-vinyl');
+  var logo = document.querySelector('.intro-vinyl .vinyl-logo');
+  if (!disc) return null;
+  return createVinylSpin(disc, logo, 45);
+})();
+
 // ===== HERO TONEARM CLICK TO PLAY =====
 (() => {
   const tonearm = document.getElementById('hero-tonearm');
@@ -193,19 +259,32 @@ intro.addEventListener('click', () => enterSite(false));
   if (!tonearm || !vinylContainer) return;
 
   let isPlaying = false;
+  let delayTimer = null;
+  const ARM_DURATION = 1000; // durée du bras pour se poser (ms)
 
   function setTonearm(playing) {
     isPlaying = playing;
-    vinylContainer.classList.toggle('playing', isPlaying);
     tonearm.classList.toggle('on-vinyl', isPlaying);
+    vinylContainer.classList.toggle('playing', isPlaying);
 
-    if (isPlaying && waves) {
-      setTimeout(() => {
-        waves.classList.remove('burst');
-        void waves.offsetWidth;
-        waves.classList.add('burst');
-        setTimeout(() => waves.classList.remove('burst'), 2000);
-      }, 350);
+    clearTimeout(delayTimer);
+
+    if (isPlaying) {
+      // Le bras se pose → attendre qu'il arrive sur le vinyle
+      delayTimer = setTimeout(function () {
+        if (window.heroSpin) window.heroSpin.play();
+        if (window.vinylAudio) window.vinylAudio.play();
+        if (waves) {
+          waves.classList.remove('burst');
+          void waves.offsetWidth;
+          waves.classList.add('burst');
+          setTimeout(() => waves.classList.remove('burst'), 2000);
+        }
+      }, ARM_DURATION);
+    } else {
+      // Arrêt immédiat du son et de la rotation (le bras se lève)
+      if (window.heroSpin) window.heroSpin.pause();
+      if (window.vinylAudio) window.vinylAudio.pause();
     }
   }
 
@@ -213,12 +292,6 @@ intro.addEventListener('click', () => enterSite(false));
     e.preventDefault();
     e.stopPropagation();
     setTonearm(!isPlaying);
-
-    // Sync audio widget
-    if (window.vinylAudio) {
-      if (isPlaying) window.vinylAudio.play();
-      else window.vinylAudio.pause();
-    }
   });
 
   // Allow the audio widget to sync the tonearm
@@ -327,14 +400,23 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
+      const isDownloadScroll = this.id === 'scroll-to-downloads';
       if (lenis) {
         lenis.scrollTo(target, { offset: 0, duration: 1.6 });
       } else {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+      if (isDownloadScroll) setTimeout(highlightDownloads, 800);
     }
   });
 });
+
+function highlightDownloads() {
+  document.querySelectorAll('.contact-downloads .download-btn').forEach(btn => {
+    btn.classList.add('highlight-pulse');
+    btn.addEventListener('animationend', () => btn.classList.remove('highlight-pulse'), { once: true });
+  });
+}
 
 // ===== PARALLAX VINYL ON SCROLL (via Lenis) =====
 const heroVinyl = document.querySelector('.hero-vinyl');
