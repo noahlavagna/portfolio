@@ -1251,17 +1251,14 @@ body.mp-lightbox-open .cursor-ring {
   .mp-intro-halo { width: 280px; height: 280px; left: 50%; transform: translateX(-50%); top: 50%; margin-top: -140px; }
 }
 
-/* ---------- Hide italic .light avant wrap mp-mask (évite double-anim sur View Transition) ---------- */
-/* Au premier paint, modern.js (defer) n'a pas encore wrappé .light dans .mp-mask.
-   Sans cette règle, le snapshot de View Transition capture l'italique en place,
-   puis l'anim slide-up rejoue après — d'où l'effet "apparaît deux fois". */
-.page-hero-title .light,
-.section-title .light {
-  opacity: 0;
-}
-.mp-mask .light,
-.mp-mask-host .light {
-  opacity: 1;
+/* ---------- View Transition : on désactive le slide-up des titres ---------- */
+/* Quand la View Transitions API est active (Chrome), le crossfade EST l'animation
+   d'entrée. Le slide-up via .mp-line rejouait par-dessus → effet "deux fois".
+   Avec .has-vt sur <html>, on neutralise le translate des .mp-line, et le mask
+   reste juste un overflow:hidden sans transform. */
+html.has-vt .mp-mask .mp-line {
+  transform: none !important;
+  transition: none !important;
 }
 
 /* ---------- PROJECT-LINK : remonté sous galerie (espacement plus serré) ---------- */
