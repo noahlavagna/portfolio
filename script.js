@@ -16,6 +16,7 @@ try {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
+    window.lenis = lenis; // exposé pour modern-plus (nudge resize)
   }
 } catch (e) {
   console.warn('Lenis init failed:', e);

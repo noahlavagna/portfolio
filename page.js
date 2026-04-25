@@ -15,6 +15,7 @@ try {
     });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
+    window.lenis = lenis; // exposé pour modern.js (nudge resize) — symétrique à script.js
   }
 } catch (e) { console.warn('Lenis init failed:', e); }
 
