@@ -1251,14 +1251,38 @@ body.mp-lightbox-open .cursor-ring {
   .mp-intro-halo { width: 280px; height: 280px; left: 50%; transform: translateX(-50%); top: 50%; margin-top: -140px; }
 }
 
-/* ---------- View Transition : on désactive le slide-up des titres ---------- */
-/* Quand la View Transitions API est active (Chrome), le crossfade EST l'animation
-   d'entrée. Le slide-up via .mp-line rejouait par-dessus → effet "deux fois".
-   Avec .has-vt sur <html>, on neutralise le translate des .mp-line, et le mask
-   reste juste un overflow:hidden sans transform. */
-html.has-vt .mp-mask .mp-line {
+/* ---------- ITALIQUE : on garde le wipe slide-up .mp-line, mais joué UNE seule fois ----------
+   Stratégie : .light est sorti du crossfade root via un view-transition-name dédié,
+   et ses pseudos sont invisibles pendant la VT. Le slide-up .mp-line est retardé du
+   temps du crossfade (0.55s) pour ne démarrer qu'après — donc on ne le voit jamais
+   en double avec le crossfade. */
+html.has-vt .page-hero-title .light {
+  view-transition-name: mp-page-italic;
+}
+::view-transition-new(mp-page-italic),
+::view-transition-old(mp-page-italic) {
+  animation: none !important;
+  opacity: 0 !important;
+}
+html.has-vt .page-hero-title .mp-mask .mp-line {
+  transition-delay: .55s;
+}
+
+/* Home : si l'intro a déjà été vue, neutraliser nav.hidden + fadeUp du hero ----------
+   Évite le clignotement quand on revient à l'accueil après navigation entre pages. */
+html.intro-done .nav.hidden {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+html.intro-done .hero-subtitle,
+html.intro-done .hero-title .line:nth-child(1),
+html.intro-done .hero-title .line:nth-child(2),
+html.intro-done .hero-desc,
+html.intro-done .hero-cta,
+html.intro-done .hero-vinyl {
+  opacity: 1 !important;
   transform: none !important;
-  transition: none !important;
+  animation: none !important;
 }
 
 /* ---------- PROJECT-LINK : remonté sous galerie (espacement plus serré) ---------- */
