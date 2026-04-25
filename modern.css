@@ -1251,6 +1251,28 @@ body.mp-lightbox-open .cursor-ring {
   .mp-intro-halo { width: 280px; height: 280px; left: 50%; transform: translateX(-50%); top: 50%; margin-top: -140px; }
 }
 
+/* ---------- Hide italic .light avant wrap mp-mask (évite double-anim sur View Transition) ---------- */
+/* Au premier paint, modern.js (defer) n'a pas encore wrappé .light dans .mp-mask.
+   Sans cette règle, le snapshot de View Transition capture l'italique en place,
+   puis l'anim slide-up rejoue après — d'où l'effet "apparaît deux fois". */
+.page-hero-title .light,
+.section-title .light {
+  opacity: 0;
+}
+.mp-mask .light,
+.mp-mask-host .light {
+  opacity: 1;
+}
+
+/* ---------- PROJECT-LINK : remonté sous galerie (espacement plus serré) ---------- */
+.project-card .project-gallery + .project-link,
+.project-card .video-gallery + .project-link {
+  margin-top: 1rem !important;
+}
+.project-card .project-gallery {
+  margin-bottom: 0 !important;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .mp-line { transition: none !important; transform: none !important; }
