@@ -17,6 +17,11 @@ try {
     }
     requestAnimationFrame(raf);
     window.lenis = lenis; // exposé pour modern-plus (nudge resize)
+    // Stop Lenis pendant l'intro pour empêcher tout scroll (le body overflow:hidden
+    // ne suffit pas, Lenis intercepte les events wheel/touch indépendamment).
+    if (!sessionStorage.getItem('intro_done')) {
+      lenis.stop();
+    }
   }
 } catch (e) {
   console.warn('Lenis init failed:', e);
@@ -100,6 +105,7 @@ function enterSite(instant) {
     nav.classList.remove('hidden');
     nav.classList.add('visible');
     document.body.style.overflow = '';
+    if (window.lenis) window.lenis.start();
     return;
   }
 
@@ -113,6 +119,7 @@ function enterSite(instant) {
     nav.classList.remove('hidden');
     nav.classList.add('visible');
     document.body.style.overflow = '';
+    if (window.lenis) window.lenis.start();
   }, 1200);
 
   setTimeout(() => {

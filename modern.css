@@ -24,6 +24,8 @@
   background: var(--accent, #c44d2b);
   transition: width .1s linear;
 }
+/* Cacher la barre de progression tant que l'intro est visible */
+body:has(#intro:not(.gone)) .m-progress { opacity: 0; }
 
 /* ---------- PULSE DOT on nav (availability) ---------- */
 .m-availability {
