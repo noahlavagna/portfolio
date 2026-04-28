@@ -1332,7 +1332,6 @@ html.intro-done .hero-vinyl {
   border-radius: 50%;
   overflow: hidden;
   margin-top: -54px;
-  border: 4px solid var(--cream, #f8f3ec);
   background: var(--cream, #f8f3ec);
   flex-shrink: 0;
   box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
@@ -1341,9 +1340,10 @@ html.intro-done .hero-vinyl {
   justify-content: center;
 }
 .yt-channel-avatar img {
-  width: 70%;
-  height: 70%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.18);
 }
 .yt-channel-meta { min-width: 0; }
 .yt-channel-name {
@@ -1417,7 +1417,6 @@ html.intro-done .hero-vinyl {
     width: 68px;
     height: 68px;
     margin-top: -38px;
-    border-width: 3px;
   }
   .yt-channel-name { font-size: 1.18rem; }
 }
@@ -1427,7 +1426,6 @@ html.intro-done .hero-vinyl {
   border-color: rgba(255, 255, 255, .08);
 }
 [data-theme="dark"] .yt-channel-avatar {
-  border-color: #2a2018;
   background: #2a2018;
 }
 [data-theme="dark"] .yt-channel-name { color: #f0e8dc; }

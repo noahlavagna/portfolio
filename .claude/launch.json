@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio",
-      "runtimeExecutable": "/usr/bin/ruby",
-      "runtimeArgs": ["-run", "-e", "httpd", "/tmp/portfolio-site", "-p", "8080"],
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8080"],
       "port": 8080
     }
   ]
