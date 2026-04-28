@@ -145,7 +145,8 @@ const counterObserver = new IntersectionObserver((entries) => {
         const p = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - p, 3);
         const val = Math.floor(eased * target);
-        el.textContent = target >= 1000 ? val.toLocaleString('fr-FR') : val;
+        const suffix = el.dataset.suffix || '';
+        el.textContent = (target >= 1000 ? val.toLocaleString('fr-FR') : val) + suffix;
         if (p < 1) requestAnimationFrame(update);
       })(performance.now());
       counterObserver.unobserve(el);
