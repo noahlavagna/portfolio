@@ -426,7 +426,7 @@
   if (footer && !footer.querySelector('.mp-updated')) {
     const updated = document.createElement('span');
     updated.className = 'mp-updated';
-    updated.textContent = 'Mis à jour · Avril 2026';
+    updated.textContent = 'Mis à jour · Mai 2026';
     footer.appendChild(updated);
   }
 
