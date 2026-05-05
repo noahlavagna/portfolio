@@ -124,6 +124,11 @@ function enterSite(instant) {
 
   setTimeout(() => {
     intro.classList.add('gone');
+    // Le vinyle héro démarre dès que l'intro disparaît : le bras s'y pose
+    // automatiquement (ARM_DURATION = 1000ms) puis le son + spin s'enclenche.
+    setTimeout(() => {
+      if (window.syncTonearm) window.syncTonearm(true);
+    }, 300);
   }, 2200);
 }
 
@@ -281,6 +286,14 @@ window.introSpin = (function () {
       w.classList.toggle('is-playing', isPlaying);
       var txt = w.querySelector('.vinyl-widget-text');
       if (txt) txt.textContent = isPlaying ? 'En lecture' : 'Vinyle';
+    }
+
+    // Mettre à jour le tooltip "Now spinning" / "Poser le diamant"
+    var tip = document.querySelector('.mp-vinyl-tooltip');
+    if (tip) {
+      tip.innerHTML = isPlaying
+        ? '<span class="mp-music-dot"></span>Now spinning &middot; Side B'
+        : '<span class="mp-needle-dot">◆</span>Poser le diamant';
     }
 
     clearTimeout(delayTimer);

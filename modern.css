@@ -960,6 +960,13 @@ html::view-transition-group(root) { animation-duration: .55s; }
   margin-right: 6px;
   animation: mp-blink 1.4s ease-in-out infinite;
 }
+.mp-vinyl-tooltip .mp-needle-dot {
+  display: inline-block;
+  font-size: 9px;
+  color: var(--accent, #c44d2b);
+  margin-right: 6px;
+  vertical-align: middle;
+}
 @keyframes mp-blink {
   0%,100% { opacity: 1; }
   50% { opacity: .3; }
