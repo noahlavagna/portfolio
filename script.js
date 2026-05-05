@@ -124,11 +124,11 @@ function enterSite(instant) {
 
   setTimeout(() => {
     intro.classList.add('gone');
-    // Le vinyle héro démarre dès que l'intro disparaît : le bras s'y pose
-    // automatiquement (ARM_DURATION = 1000ms) puis le son + spin s'enclenche.
+    // Démarrage instantané : le vinyle est déjà en rotation quand la page apparaît
+    // L'audio peut démarrer car l'utilisateur a cliqué sur l'intro (interaction requise)
     setTimeout(() => {
-      if (window.syncTonearm) window.syncTonearm(true);
-    }, 300);
+      if (window.startVinylInstant) window.startVinylInstant(true);
+    }, 80);
   }, 2200);
 }
 
@@ -317,6 +317,28 @@ window.introSpin = (function () {
     }
   }
 
+  // Démarrage instantané : tonearm posé + vinyle en rotation, sans animation
+  function startInstant(withAudio) {
+    isPlaying = true;
+    tonearm.classList.add('no-transition');
+    tonearm.classList.add('on-vinyl');
+    void tonearm.offsetWidth; // force reflow → transition désactivée le temps du snap
+    tonearm.classList.remove('no-transition');
+    vinylContainer.classList.add('playing');
+    if (window.heroSpin) window.heroSpin.play();
+    if (withAudio && window.vinylAudio) window.vinylAudio.play();
+    var w = document.querySelector('.vinyl-widget');
+    if (w) {
+      w.classList.add('is-playing');
+      var txt = w.querySelector('.vinyl-widget-text');
+      if (txt) txt.textContent = 'En lecture';
+    }
+    var tip = document.querySelector('.mp-vinyl-tooltip');
+    if (tip) {
+      tip.innerHTML = '<span class="mp-music-dot"></span>Now spinning &middot; Side B';
+    }
+  }
+
   tonearm.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -325,6 +347,12 @@ window.introSpin = (function () {
 
   // Allow the audio widget to sync the tonearm
   window.syncTonearm = setTonearm;
+  window.startVinylInstant = startInstant;
+
+  // Vinyle en rotation par défaut dès que la page est visible
+  if (sessionStorage.getItem('intro_done')) {
+    startInstant(false); // pas d'audio (navigateur bloque l'autoplay sans interaction)
+  }
 })();
 
 // Keyboard shortcut

@@ -687,6 +687,10 @@ html.intro-done .intro {
   z-index: 2;
 }
 
+.tonearm.no-transition {
+  transition: none !important;
+}
+
 .tonearm.on-vinyl {
   transform: rotate(15deg);
 }
