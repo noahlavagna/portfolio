@@ -445,14 +445,14 @@ html.intro-done .intro {
   z-index: 0;
 }
 
-/* Sound waves emanating from the vinyl */
+/* Sound waves emanating from the vinyl — anchored inside .vinyl-container */
 .hero-waves {
   position: absolute;
   top: 50%;
-  right: 10%;
+  left: 50%;
   width: 380px;
   height: 380px;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -1551,22 +1551,7 @@ html.intro-done .intro {
     position: relative;
   }
 
-  /* Move sound waves inside vinyl container area on mobile by matching its position */
-  .hero-waves {
-    position: absolute;
-    right: auto;
-    left: 50%;
-    top: auto;
-    bottom: auto;
-    margin: 0;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    /* Align vertically with the vinyl: hero is flex-column centered, vinyl is at top of hero-content */
-    pointer-events: none;
-  }
-
-  /* Hide waves on mobile to avoid alignment issues — vinyl alone is enough */
+  /* Hide waves on mobile — vinyl alone is enough */
   .hero-waves { display: none; }
 
   /* Disable warm radial glow positioning that targets right side */
