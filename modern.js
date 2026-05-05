@@ -548,7 +548,9 @@
   if (heroVinyl && !document.querySelector('.mp-vinyl-tooltip')) {
     const tip = document.createElement('div');
     tip.className = 'mp-vinyl-tooltip';
-    tip.innerHTML = '<span class="mp-needle-dot">◆</span>Poser le diamant';
+    tip.innerHTML =
+      '<span class="mp-tip-text mp-tip-playing"><span class="mp-music-dot"></span>Now spinning &middot; Side B</span>' +
+      '<span class="mp-tip-text mp-tip-idle"><span class="mp-needle-dot">◆</span>Poser le diamant</span>';
     heroVinyl.appendChild(tip);
   }
 

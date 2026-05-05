@@ -945,6 +945,30 @@ html::view-transition-group(root) { animation-duration: .55s; }
   pointer-events: none;
   transition: all .35s cubic-bezier(.22,1,.36,1);
   z-index: 100;
+  display: grid; /* Stack les deux états sur la même cellule pour un cross-fade propre */
+}
+.mp-vinyl-tooltip .mp-tip-text {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: opacity .32s cubic-bezier(.22,1,.36,1), transform .32s cubic-bezier(.22,1,.36,1);
+}
+.mp-vinyl-tooltip .mp-tip-playing {
+  opacity: 1;
+  transform: translateY(0);
+}
+.mp-vinyl-tooltip .mp-tip-idle {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+.mp-vinyl-tooltip.is-idle .mp-tip-playing {
+  opacity: 0;
+  transform: translateY(4px);
+}
+.mp-vinyl-tooltip.is-idle .mp-tip-idle {
+  opacity: 1;
+  transform: translateY(0);
 }
 .mp-vinyl-tooltip::before {
   content: "";

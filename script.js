@@ -272,15 +272,15 @@ window.introSpin = (function () {
   if (!tonearm || !vinylContainer) return;
 
   let isPlaying = false;
-  let delayTimer = null;
-  const ARM_DURATION = 1000; // durée du bras pour se poser (ms)
 
+  // Aucune animation du bras : son état suit instantanément l'état de lecture.
+  // Le tooltip cross-fade entre "Now spinning" (playing) et "Poser le diamant" (idle)
+  // via la classe .is-idle (CSS gère la transition).
   function setTonearm(playing) {
     isPlaying = playing;
     tonearm.classList.toggle('on-vinyl', isPlaying);
     vinylContainer.classList.toggle('playing', isPlaying);
 
-    // Mettre à jour l'UI du widget immédiatement (feedback visuel)
     var w = document.querySelector('.vinyl-widget');
     if (w) {
       w.classList.toggle('is-playing', isPlaying);
@@ -288,30 +288,19 @@ window.introSpin = (function () {
       if (txt) txt.textContent = isPlaying ? 'En lecture' : 'Vinyle';
     }
 
-    // Mettre à jour le tooltip "Now spinning" / "Poser le diamant"
     var tip = document.querySelector('.mp-vinyl-tooltip');
-    if (tip) {
-      tip.innerHTML = isPlaying
-        ? '<span class="mp-music-dot"></span>Now spinning &middot; Side B'
-        : '<span class="mp-needle-dot">◆</span>Poser le diamant';
-    }
-
-    clearTimeout(delayTimer);
+    if (tip) tip.classList.toggle('is-idle', !isPlaying);
 
     if (isPlaying) {
-      // Le bras se pose → attendre qu'il arrive sur le vinyle
-      delayTimer = setTimeout(function () {
-        if (window.heroSpin) window.heroSpin.play();
-        if (window.vinylAudio) window.vinylAudio.play();
-        if (waves) {
-          waves.classList.remove('burst');
-          void waves.offsetWidth;
-          waves.classList.add('burst');
-          setTimeout(() => waves.classList.remove('burst'), 2000);
-        }
-      }, ARM_DURATION);
+      if (window.heroSpin) window.heroSpin.play();
+      if (window.vinylAudio) window.vinylAudio.play();
+      if (waves) {
+        waves.classList.remove('burst');
+        void waves.offsetWidth;
+        waves.classList.add('burst');
+        setTimeout(() => waves.classList.remove('burst'), 2000);
+      }
     } else {
-      // Arrêt immédiat du son et de la rotation (le bras se lève)
       if (window.heroSpin) window.heroSpin.pause();
       if (window.vinylAudio) window.vinylAudio.pause();
     }
@@ -320,10 +309,7 @@ window.introSpin = (function () {
   // Démarrage instantané : tonearm posé + vinyle en rotation, sans animation
   function startInstant(withAudio) {
     isPlaying = true;
-    tonearm.classList.add('no-transition');
     tonearm.classList.add('on-vinyl');
-    void tonearm.offsetWidth; // force reflow → transition désactivée le temps du snap
-    tonearm.classList.remove('no-transition');
     vinylContainer.classList.add('playing');
     if (window.heroSpin) window.heroSpin.play();
     if (withAudio && window.vinylAudio) window.vinylAudio.play();
@@ -334,9 +320,7 @@ window.introSpin = (function () {
       if (txt) txt.textContent = 'En lecture';
     }
     var tip = document.querySelector('.mp-vinyl-tooltip');
-    if (tip) {
-      tip.innerHTML = '<span class="mp-music-dot"></span>Now spinning &middot; Side B';
-    }
+    if (tip) tip.classList.remove('is-idle');
   }
 
   tonearm.addEventListener('click', (e) => {
