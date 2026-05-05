@@ -272,10 +272,11 @@ window.introSpin = (function () {
   if (!tonearm || !vinylContainer) return;
 
   let isPlaying = false;
+  let delayTimer = null;
+  const ARM_DURATION = 1000; // durée du bras pour se poser (ms)
 
-  // Aucune animation du bras : son état suit instantanément l'état de lecture.
-  // Le tooltip cross-fade entre "Now spinning" (playing) et "Poser le diamant" (idle)
-  // via la classe .is-idle (CSS gère la transition).
+  // Au clic : animation du bras + le son démarre une fois qu'il est posé.
+  // Le tooltip cross-fade entre "Now spinning" et "Poser le diamant" via .is-idle.
   function setTonearm(playing) {
     isPlaying = playing;
     tonearm.classList.toggle('on-vinyl', isPlaying);
@@ -291,25 +292,33 @@ window.introSpin = (function () {
     var tip = document.querySelector('.mp-vinyl-tooltip');
     if (tip) tip.classList.toggle('is-idle', !isPlaying);
 
+    clearTimeout(delayTimer);
+
     if (isPlaying) {
-      if (window.heroSpin) window.heroSpin.play();
-      if (window.vinylAudio) window.vinylAudio.play();
-      if (waves) {
-        waves.classList.remove('burst');
-        void waves.offsetWidth;
-        waves.classList.add('burst');
-        setTimeout(() => waves.classList.remove('burst'), 2000);
-      }
+      delayTimer = setTimeout(function () {
+        if (window.heroSpin) window.heroSpin.play();
+        if (window.vinylAudio) window.vinylAudio.play();
+        if (waves) {
+          waves.classList.remove('burst');
+          void waves.offsetWidth;
+          waves.classList.add('burst');
+          setTimeout(() => waves.classList.remove('burst'), 2000);
+        }
+      }, ARM_DURATION);
     } else {
       if (window.heroSpin) window.heroSpin.pause();
       if (window.vinylAudio) window.vinylAudio.pause();
     }
   }
 
-  // Démarrage instantané : tonearm posé + vinyle en rotation, sans animation
+  // Démarrage instantané : tonearm posé sans animation (snap), vinyle en rotation.
+  // Utilisé après l'intro : l'utilisateur a déjà vu le bras se poser dans l'intro.
   function startInstant(withAudio) {
     isPlaying = true;
+    tonearm.classList.add('no-transition');
     tonearm.classList.add('on-vinyl');
+    void tonearm.offsetWidth; // force reflow → snap appliqué sans animation
+    tonearm.classList.remove('no-transition');
     vinylContainer.classList.add('playing');
     if (window.heroSpin) window.heroSpin.play();
     if (withAudio && window.vinylAudio) window.vinylAudio.play();

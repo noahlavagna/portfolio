@@ -674,7 +674,7 @@ html.intro-done .intro {
   to { transform: rotate(-360deg); }
 }
 
-/* Tonearm — état instantané (pas d'animation, l'état suit immédiatement le clic) */
+/* Tonearm */
 .tonearm {
   position: absolute;
   top: -10px;
@@ -683,7 +683,14 @@ html.intro-done .intro {
   transform: rotate(-25deg);
   filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
   cursor: pointer;
+  transition: transform 1.3s cubic-bezier(0.65, 0, 0.35, 1);
   z-index: 2;
+}
+
+/* Snap initial : le bras se pose sans animation au chargement
+   (l'utilisateur a déjà vu l'animation dans l'intro) */
+.tonearm.no-transition {
+  transition: none !important;
 }
 
 .tonearm.on-vinyl {
