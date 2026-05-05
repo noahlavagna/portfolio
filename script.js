@@ -271,7 +271,9 @@ window.introSpin = (function () {
   const waves = document.querySelector('.hero-waves');
   if (!tonearm || !vinylContainer) return;
 
-  let isPlaying = false;
+  // État initial : bras posé sur le vinyle (défini directement dans le HTML).
+  // Le vrai démarrage de la rotation + audio se fait via startInstant() depuis l'init.
+  let isPlaying = true;
   let delayTimer = null;
   const ARM_DURATION = 1000; // durée du bras pour se poser (ms)
 
@@ -311,14 +313,11 @@ window.introSpin = (function () {
     }
   }
 
-  // Démarrage instantané : tonearm posé sans animation (snap), vinyle en rotation.
-  // Utilisé après l'intro : l'utilisateur a déjà vu le bras se poser dans l'intro.
+  // Démarrage instantané : le bras est déjà posé via le HTML (.tonearm.on-vinyl
+   // par défaut), il ne reste qu'à lancer la rotation et synchroniser l'UI.
   function startInstant(withAudio) {
     isPlaying = true;
-    tonearm.classList.add('no-transition');
     tonearm.classList.add('on-vinyl');
-    void tonearm.offsetWidth; // force reflow → snap appliqué sans animation
-    tonearm.classList.remove('no-transition');
     vinylContainer.classList.add('playing');
     if (window.heroSpin) window.heroSpin.play();
     if (withAudio && window.vinylAudio) window.vinylAudio.play();
