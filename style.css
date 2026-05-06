@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/* <picture> est un simple wrapper pour le srcset WebP : on le rend transparent
+   pour la mise en page afin que les styles ciblant l'<img> (width:60%, flex,
+   centrage, etc.) s'appliquent comme si la <picture> n'existait pas. */
+picture {
+  display: contents;
+}
+
 :root {
   --bg: #f2ece4;
   --bg-dark: #e8e0d4;
