@@ -626,7 +626,7 @@ html::view-transition-group(root) { animation-duration: .55s; }
 }
 .mp-lightbox-watch[hidden] { display: none; }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .mp-lightbox-close { top: 16px; right: 16px; }
   .mp-lightbox-prev  { left: 8px; }
   .mp-lightbox-next  { right: 8px; }

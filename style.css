@@ -268,7 +268,7 @@ html.intro-done .intro {
   transition: opacity 0.6s ease 0.3s;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .intro-turntable {
     width: 280px;
     height: 280px;
@@ -1528,7 +1528,7 @@ html.intro-done .intro {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .nav-links {
     display: none;
   }
@@ -1929,7 +1929,7 @@ body.cursor-diamond .cursor-ring {
 }
 
 /* Mobile : widget plus compact */
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .vinyl-widget {
     bottom: 1rem;
     right: 1rem;
@@ -2027,7 +2027,7 @@ body.cursor-diamond .cursor-ring {
   transform: translateX(-3px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
   .page-hero {
     padding: 7rem 0 3rem;
   }
