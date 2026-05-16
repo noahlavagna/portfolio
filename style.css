@@ -1214,6 +1214,16 @@ html.intro-done .intro {
   font-size: 1rem;
 }
 
+/* Miniature sans lien (vidéo pas encore publiée) :
+   pas de pointer cursor, pas de zoom au survol — l'overlay
+   "bientôt" reste visible au hover pour expliciter l'état. */
+.thumb-soon {
+  cursor: default;
+}
+.thumb-soon:hover img {
+  transform: none;
+}
+
 /* Stats */
 .stats-row {
   display: grid;
