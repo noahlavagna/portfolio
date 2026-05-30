@@ -1411,6 +1411,10 @@ html.intro-done .intro {
   transform: translateY(0);
 }
 
+.project-card[data-reveal] {
+  transition: opacity 0.8s ease, transform 0.4s ease, box-shadow 0.4s ease;
+}
+
 /* Hero animations */
 .hero-subtitle {
   opacity: 0;

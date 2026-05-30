@@ -1585,6 +1585,13 @@ html.intro-done .hero-vinyl {
 }
 .project-category[data-cat="vente"]::before { content: ""; }
 
+.project-category[data-cat="marketing"] {
+  background: rgba(72, 94, 150, 0.08);
+  color: #485e96;
+  border-color: rgba(72, 94, 150, 0.18);
+}
+.project-category[data-cat="marketing"]::before { content: ""; }
+
 [data-theme="dark"] .project-category {
   background: rgba(232, 148, 114, 0.10);
   color: #e89472;
@@ -1594,6 +1601,11 @@ html.intro-done .hero-vinyl {
   background: rgba(140, 200, 170, 0.10);
   color: #8cc8aa;
   border-color: rgba(140, 200, 170, 0.25);
+}
+[data-theme="dark"] .project-category[data-cat="marketing"] {
+  background: rgba(150, 170, 230, 0.10);
+  color: #96aae6;
+  border-color: rgba(150, 170, 230, 0.25);
 }
 
 /* La project-header devient flex-wrap pour bien encaisser la pill */
