@@ -116,7 +116,27 @@
       "Bash(curl -s -X PUT -H 'Content-Type: application/json' -d '{\"id\":\"vol-check-1\",\"anim\":\"alert\",\"title\":\"ALERTE\",\"sub\":\"\",\"team\":null,\"amount\":null,\"voice\":\"voix/alerte.aac\",\"ts\":0}' \"https://escape-game-fdeed-default-rtdb.europe-west1.firebasedatabase.app/rooms/main/event.json\")",
       "Bash(curl -s -X PUT -H 'Content-Type: application/json' -d '{\"teamA\":{\"name\":\"SOUCHE A\",\"color\":\"#9bff3b\",\"share\":50},\"teamB\":{\"name\":\"SOUCHE B\",\"color\":\"#b14bff\",\"share\":40}}' \"https://escape-game-fdeed-default-rtdb.europe-west1.firebasedatabase.app/rooms/main/state.json\")",
       "Bash(curl -s \"https://escape-game-fdeed-default-rtdb.europe-west1.firebasedatabase.app/rooms/main/state/teamA/shield.json\")",
-      "Bash(curl -s -X PUT -H 'Content-Type: application/json' -d '{\"id\":\"defi-test-1\",\"anim\":\"alert\",\"title\":\"DÉCONTAMINATION\",\"sub\":\"Un membre fait 15 POMPES pour purger la zone.\",\"team\":null,\"amount\":null,\"voice\":null,\"hold\":13000,\"icon\":\"🧴\",\"ts\":0}' \"https://escape-game-fdeed-default-rtdb.europe-west1.firebasedatabase.app/rooms/main/event.json\")"
+      "Bash(curl -s -X PUT -H 'Content-Type: application/json' -d '{\"id\":\"defi-test-1\",\"anim\":\"alert\",\"title\":\"DÉCONTAMINATION\",\"sub\":\"Un membre fait 15 POMPES pour purger la zone.\",\"team\":null,\"amount\":null,\"voice\":null,\"hold\":13000,\"icon\":\"🧴\",\"ts\":0}' \"https://escape-game-fdeed-default-rtdb.europe-west1.firebasedatabase.app/rooms/main/event.json\")",
+      "Bash(cp -R /tmp/escape-game-push/voix projets/escape-game/voix)",
+      "Bash(cp -R /tmp/escape-game-push/musique projets/escape-game/musique)",
+      "Bash(node -e ' *)",
+      "Bash(node --check /tmp/_egcheck.js)",
+      "Bash(rm -f /tmp/_egcheck.js)",
+      "Bash(find ~/Documents/perso ~/Downloads ~/Desktop ~/Movies -type f \\\\\\( -iname \"*.mp4\" -o -iname \"*.mov\" -o -iname \"*.m4v\" \\\\\\) -mtime -30 2>/dev/null | head -40)",
+      "Bash(find ~/Documents ~/Downloads ~/Desktop ~/Movies -type f \\\\\\( -iname \"*.mp4\" -o -iname \"*.mov\" -o -iname \"*.m4v\" \\\\\\) 2>/dev/null | grep -iE \"escape|antidote|salle|peste|quarant\" | head -20; echo \"---ALL in any escape/antidote folder---\"; find ~/Documents ~/Downloads ~/Desktop -type d \\\\\\( -iname \"*escape*\" -o -iname \"*antidote*\" \\\\\\) 2>/dev/null)",
+      "Bash(mdls -name kMDItemDurationSeconds -name kMDItemPixelWidth -name kMDItemPixelHeight \"/Users/noah/Downloads/55CEBA52-E4E8-4BCA-AC34-5FF5ECB238C1.mov\")",
+      "Bash(which avconvert; echo \"---\"; cp \"/Users/noah/Downloads/55CEBA52-E4E8-4BCA-AC34-5FF5ECB238C1.mov\" /tmp/escape_src.mov && echo \"copied\")",
+      "Read(//private/tmp/**)",
+      "Bash(avconvert --preset PresetHEVC1920x1080 --source escape_src.mov --output escape_h265.mp4)",
+      "Bash(avconvert --help)",
+      "Bash(grep -iA40 \"preset\")",
+      "Bash(avconvert --preset Preset960x540 --source escape_src.mov --output escape_540.mp4 --replace)",
+      "Bash(mdls -name kMDItemPixelWidth -name kMDItemPixelHeight /tmp/escape_540.mp4)",
+      "Bash(qlmanage -t -s 1200 -o /tmp/ \"escape_540.mp4\")",
+      "Bash(avconvert --start 58 --duration 1 --preset Preset960x540 --source escape_src.mov --output /tmp/escape_frame.mp4 --replace)",
+      "Bash(qlmanage -t -s 1200 -o /tmp/frame60/ \"/tmp/escape_frame.mp4\")",
+      "Bash(mkdir -p /tmp/frame60)",
+      "Bash(mkdir -p *)"
     ]
   }
 }
