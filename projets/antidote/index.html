@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'Antidote · Escape Game — Noah Lavagna</title>
+  <meta name="description" content="Escape game post-apocalyptique sur le thème de la peste : conception, douze énigmes et système d'affichage temps réel pour animer la partie en direct. Projet de groupe réalisé en trois jours.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="L'Antidote · Escape Game — Noah Lavagna">
+  <meta property="og:description" content="Escape game post-apocalyptique : conception, douze énigmes et système d'affichage temps réel pour animer la partie en direct.">
+  <meta property="og:image" content="../../assets/images/og-preview.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../../assets/images/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../../assets/images/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../../assets/images/apple-touch-icon-120.png">
+  <meta name="apple-mobile-web-app-title" content="Noah Lavagna">
+  <link rel="stylesheet" href="../../style.css?v=29">
+  <link rel="stylesheet" href="../../modern.css?v=30">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+  <script src="../../favicon-anim.js?v=1" defer></script>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script>
+    try {
+      if (document.referrer && new URL(document.referrer).origin === location.origin) {
+        document.documentElement.classList.add('mp-internal-nav');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="../../" class="nav-logo" aria-label="Accueil Noah Lavagna">
+      <picture><source srcset="../../assets/images/noah.webp" type="image/webp"><img src="../../assets/images/noah.jpg" alt="Noah Lavagna"></picture>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Accueil</a>
+      <div class="nav-dropdown"><a href="../../projets/" class="nav-active" data-nav-trigger>Projets <span class="nav-caret" aria-hidden="true">▾</span></a><div class="nav-dropdown-menu" role="menu"><a href="../../projets/" role="menuitem">Tous les projets</a><a href="../../projets/#cat-communication" role="menuitem">Communication</a><a href="../../projets/#cat-vente" role="menuitem">Vente</a></div></div>
+      <a href="../../experiences/">Expériences</a>
+      <a href="../../creations/">Créations</a>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="../../">Accueil</a>
+    <a href="../../projets/">Projets</a>
+    <a href="../../projets/#cat-communication" class="mobile-sub">— Communication</a>
+    <a href="../../projets/#cat-vente" class="mobile-sub">— Vente</a>
+    <a href="../../experiences/">Expériences</a>
+    <a href="../../creations/">Créations</a>
+    <a href="../../#contact">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour aux projets
+      </a>
+      <div class="page-hero-label">05</div>
+      <h1 class="page-hero-title">
+        L'Antidote<br><span class="light">Escape Game</span>
+      </h1>
+      <p class="page-hero-desc">Escape game post-apocalyptique : conception, douze énigmes et système d'affichage temps réel pour animer la partie en direct. Projet de groupe, trois jours.</p>
+      <div class="page-hero-accent"></div>
+    </div>
+  </section>
+
+  <!-- Le projet -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label" data-reveal>Le projet</div>
+      <div class="project-card" data-reveal>
+        <div class="project-body">
+          <div class="project-description">
+            <p><strong>L'Antidote</strong> est un escape game post-apocalyptique sur le thème de la peste, conçu et animé en équipe. Le principe détourne les codes du genre : il ne s'agit pas de sortir d'une salle, mais de <strong>conquérir des parts de marché</strong>. Deux équipes, la <strong>souche A</strong> et la <strong>souche B</strong>, s'affrontent pour propager leur souche et dominer le plateau.</p>
+            <p>On avait <strong>trois jours</strong>. Trois jours pour imaginer le concept, écrire les <strong>douze énigmes</strong>, construire le système d'affichage temps réel et préparer toute la mise en scène sonore et visuelle. Une contrainte courte qui a forcé des choix nets et une organisation serrée entre nous.</p>
+            <p>Ma part a porté sur le <strong>système qui anime la salle en direct</strong> : un tableau de scores projeté au mur, piloté depuis un téléphone, capable de déclencher compétences, événements et gages physiques au moment voulu. C'est cette couche d'animation temps réel qui transforme une suite d'énigmes en une vraie partie sous tension.</p>
+          </div>
+          <div class="stage-skills">
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>
+              </div>
+              <span>Conception du jeu</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <span>Affichage temps réel</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </div>
+              <span>Direction artistique &amp; sonore</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span>Travail d'équipe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- L'idée -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-label" data-reveal>L'idée</div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">01</span>
+          <h3 class="project-title">Détourner l'escape game classique</h3>
+          <span class="project-type">Concept</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Au départ, l'idée tenait en une question : comment rendre un escape game plus nerveux qu'une simple chasse aux indices ? La réponse a été d'en faire <strong>un affrontement</strong>. Plutôt que d'enfermer une équipe face à des cadenas, on a opposé <strong>deux équipes en direct</strong>, chacune incarnant une souche d'un virus qui cherche à se répandre.</p>
+            <p>Le thème de la peste a donné le ton : ambiance post-apocalyptique, zone de quarantaine, contamination du marché. Le vocabulaire du jeu, parts de marché, confinement, vaccin, brouillage, vient renforcer cet univers. Chaque mot sert l'histoire autant que la mécanique.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">02</span>
+          <h3 class="project-title">Douze énigmes, deux souches</h3>
+          <span class="project-type">Game design</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Le cœur du jeu repose sur <strong>douze énigmes</strong>, pensées pour être résolues en parallèle par les deux équipes. Chaque énigme résolue fait gagner du terrain, et donc des parts de marché à sa souche. La progression n'est jamais figée : une équipe en retard peut renverser la partie d'un seul coup.</p>
+            <p>L'enjeu en concevant ces énigmes était l'équilibre. Assez difficiles pour résister, assez claires pour ne pas bloquer le rythme, et surtout pensées pour que les deux souches restent au coude à coude le plus longtemps possible. C'est cette tension permanente qui donne envie d'aller au bout.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- L'animation temps réel -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-label" data-reveal>L'animation temps réel</div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">03</span>
+          <h3 class="project-title">Un tableau qui vit pendant la partie</h3>
+          <span class="project-type">Système · cœur du projet</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Tout le but des événements et des animations était le même : <strong>animer l'escape game en temps réel</strong>. Pas une décoration figée, mais un tableau vivant, projeté au mur, qui réagit à chaque action des équipes. Les scores montent et descendent en direct, les parts de marché se transfèrent, et l'écran impose le rythme à toute la salle.</p>
+            <p>Le tableau se pilote depuis un téléphone, comme une régie. D'un côté l'affichage que voient les joueurs, de l'autre la télécommande du maître du jeu. Cela permet de déclencher au bon moment des <strong>compétences</strong> (vol de parts, confinement, sabotage, vaccin, brouillage), des <strong>événements globaux</strong> et des <strong>gages physiques chronométrés</strong> qui obligent les joueurs à se lever, à bouger, à se mettre en danger.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">04</span>
+          <h3 class="project-title">La voix qui raconte la contamination</h3>
+          <span class="project-type">Habillage sonore</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Pour lier le tout, chaque temps fort est porté par une <strong>narration à la Morgan Freeman</strong>, grave et posée, qui commente la propagation des souches comme un documentaire de fin du monde. La voix annonce les coups, dramatise les retournements et donne une vraie épaisseur de récit à la partie.</p>
+            <p>Avec une musique d'ambiance qui baisse automatiquement quand la voix parle, des alertes, une sirène et des effets visuels de glitch, l'objectif était d'obtenir une <strong>immersion totale</strong>. On ne joue pas devant un écran, on est dans la zone de quarantaine.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- La contrainte -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-label" data-reveal>La contrainte</div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">05</span>
+          <h3 class="project-title">Trois jours, du concept à la salle</h3>
+          <span class="project-type">Production express</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Trois jours, c'est court pour passer d'une feuille blanche à une salle qui tourne. Il a fallu trancher vite : valider le concept, répartir le travail entre l'écriture des énigmes, la construction du système temps réel et la mise en scène, puis tester l'ensemble avant l'ouverture.</p>
+            <p>Cette contrainte a été un moteur. Elle a poussé à <strong>aller à l'essentiel</strong>, à prototyper plutôt qu'à théoriser, et à faire des choix assumés. Le résultat est un escape game complet, jouable de bout en bout, où chaque brique, des énigmes à la voix, parle le même langage.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Démo -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <a href="../escape-game/" class="watch-cta" data-reveal>
+        <div class="watch-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        </div>
+        <div class="watch-cta-text">
+          <span class="watch-cta-eyebrow">Le résultat</span>
+          <span class="watch-cta-title">Lancer la démo jouable</span>
+          <span class="watch-cta-meta">Tableau + télécommande, sans serveur</span>
+        </div>
+        <div class="watch-cta-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Noah Lavagna &copy; 2026</p>
+    </div>
+  </footer>
+
+  <script src="../../page-transition.js?v=4" defer></script>
+  <script src="../../vinyl-audio.js?v=3" defer></script>
+  <script src="../../page.js?v=5" defer></script>
+  <script src="../../modern.js?v=9" defer></script>
+</body>
+</html>
