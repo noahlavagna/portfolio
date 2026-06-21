@@ -1,0 +1,88 @@
+/* =====================================================================
+   THÈME POST-APO / PESTE — partagé tableau + télécommande
+   Palette : vert toxique, biohazard, quarantaine, décrépitude.
+   ===================================================================== */
+:root{
+  --bg:#05080a;
+  --bg2:#0a1209;
+  --toxic:#9bff3b;      /* vert peste acide */
+  --toxic-deep:#1d3b08;
+  --bio:#c8ff00;        /* jaune biohazard */
+  --rot:#6b8f1a;        /* vert moisi */
+  --infect:#b14bff;     /* souche violette (équipe B) */
+  --red:#ff3b30;        /* danger */
+  --amber:#ffae00;      /* quarantaine */
+  --ink:#e7f3d6;
+  --muted:#6c7d5a;
+  --line:rgba(155,255,59,.18);
+  --mono:"Share Tech Mono",ui-monospace,monospace;
+  --display:"Anton",Impact,sans-serif;
+  --heavy:"Black Ops One",var(--display);
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;height:100%;}
+body{
+  background:
+    radial-gradient(120% 80% at 50% -10%, #14260a 0%, transparent 55%),
+    radial-gradient(140% 120% at 50% 120%, #0a1408 0%, var(--bg) 60%),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--mono);
+  overflow:hidden;
+}
+
+/* --- couches d'ambiance --- */
+.fx{position:fixed;inset:0;pointer-events:none;z-index:50;}
+.fx.scan{
+  background:repeating-linear-gradient(
+    to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.30) 2px 4px);
+  mix-blend-mode:multiply;opacity:.55;
+}
+.fx.vignette{
+  box-shadow:inset 0 0 220px 60px rgba(0,0,0,.88),
+             inset 0 0 70px 10px rgba(40,90,0,.35);
+}
+.fx.flicker{background:rgba(120,255,40,.025);animation:flick 6s steps(2) infinite;}
+@keyframes flick{0%,96%,100%{opacity:.0}97%{opacity:.5}98%{opacity:0}99%{opacity:.7}}
+/* brume toxique qui dérive */
+.fx.fog{
+  background:
+    radial-gradient(40% 60% at 20% 80%, rgba(120,255,40,.10), transparent 60%),
+    radial-gradient(50% 50% at 80% 30%, rgba(120,255,40,.08), transparent 60%);
+  animation:fog 22s ease-in-out infinite alternate;
+}
+@keyframes fog{from{transform:translate3d(-3%,2%,0) scale(1.05)}to{transform:translate3d(4%,-3%,0) scale(1.15)}}
+/* bandes de quarantaine hazmat (jaune/noir) */
+.warn-strip{
+  position:fixed;left:0;right:0;height:14px;z-index:40;
+  background:repeating-linear-gradient(45deg,#c8b400 0 18px,#0a0f04 18px 36px);
+  opacity:.75;
+}
+.warn-strip.top{top:0;}
+.warn-strip.bot{bottom:0;}
+
+/* filigrane biohazard */
+.biohazard{
+  position:fixed;z-index:1;pointer-events:none;font-size:60vh;line-height:1;
+  left:50%;top:50%;transform:translate(-50%,-50%);
+  color:var(--toxic);opacity:.04;animation:spin 60s linear infinite;
+}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+.glitch{position:relative;}
+.glitch::before,.glitch::after{
+  content:attr(data-text);position:absolute;inset:0;clip-path:inset(0 0 0 0);
+}
+.glitch::before{color:var(--infect);transform:translate(2px,-1px);opacity:.55;
+  animation:gl 2.5s infinite linear alternate;}
+.glitch::after{color:var(--toxic);transform:translate(-2px,1px);opacity:.5;
+  animation:gl 3.1s infinite linear alternate-reverse;}
+@keyframes gl{
+  0%{clip-path:inset(0 0 92% 0)}20%{clip-path:inset(70% 0 8% 0)}
+  40%{clip-path:inset(20% 0 60% 0)}60%{clip-path:inset(85% 0 2% 0)}
+  80%{clip-path:inset(40% 0 40% 0)}100%{clip-path:inset(8% 0 80% 0)}
+}
+
+.blink{animation:blink 1.1s steps(2) infinite;}
+@keyframes blink{50%{opacity:.15}}
