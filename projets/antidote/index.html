@@ -22,6 +22,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+  <style>
+    .room-video-wrap { display: flex; justify-content: center; }
+    .room-video {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 480 / 848;
+      border-radius: 14px;
+      background: #0a0705;
+      box-shadow: 0 24px 60px rgba(0,0,0,.22);
+      display: block;
+    }
+    .room-caption {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-family: var(--font-heading, 'Space Grotesk'), sans-serif;
+      font-size: .8rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-light, #5a5549);
+    }
+  </style>
   <script src="../../favicon-anim.js?v=1" defer></script>
   <link rel="dns-prefetch" href="https://unpkg.com">
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
@@ -214,6 +235,28 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- La salle -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-label" data-reveal>La salle</div>
+      <div class="project-card" data-reveal>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Une salle de classe transformée en zone de quarantaine le temps de la partie : bâches, signalétique, rubans de balisage, éclairages rouges et verts, et le tableau de scores projeté au mur. Voici un aperçu de l'ambiance réelle pendant le jeu.</p>
+          </div>
+          <div class="room-video-wrap">
+            <video class="room-video" controls playsinline preload="none"
+                   poster="../../assets/images/escape_room_poster.jpg">
+              <source src="../../assets/video/escape-room.mp4" type="video/mp4">
+              Votre navigateur ne peut pas lire cette vidéo.
+            </video>
+          </div>
+          <p class="room-caption">Aperçu de la salle en conditions réelles</p>
+        </div>
+      </div>
     </div>
   </section>
 
