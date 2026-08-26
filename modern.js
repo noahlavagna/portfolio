@@ -42,6 +42,8 @@
     projets: ['Projets universitaires', 'BUT TC', 'Communication', 'Études de cas', 'Affinity Designer', 'Travail d\'équipe'],
     experiences: ['Expériences pro', 'Stages', 'Agences com', 'Shootings', 'Séminaires', 'Polyvalence'],
     creations: ['Créations perso', 'YouTube', 'Miniatures', 'Montage vidéo', 'Motion design', 'Identité visuelle'],
+    youtube: ['CasperYTB', 'Miniatures', 'Musique & culture', 'Écriture', 'Référencement', 'Direction artistique'],
+    montage: ['Montage vidéo', 'Premiere Pro', 'After Effects', 'TikTok & Shorts', 'Format vertical', 'Mixage sonore'],
     contact: ['Parlons-en', 'Disponible 2026', 'Alternance', 'Collaborations', 'Communication', 'Création visuelle']
   };
   const buildTicker = (items) => {
@@ -69,6 +71,8 @@
     let key = 'default';
     if (path.includes('/projets')) key = 'projets';
     else if (path.includes('/experiences')) key = 'experiences';
+    else if (path.includes('/creations/youtube')) key = 'youtube';
+    else if (path.includes('/creations/montage')) key = 'montage';
     else if (path.includes('/creations')) key = 'creations';
     else if (path.includes('/contact')) key = 'contact';
     pageHero.insertAdjacentElement('afterend', buildTicker(tickerItemsByPage[key]));
@@ -80,9 +84,12 @@
     const path = window.location.pathname.toLowerCase();
     let kicker = 'Portfolio';
     if (path.includes('/projets/cannes-cinema')) kicker = 'Projet · SAE Communication';
+    else if (path.includes('/projets/betwork')) kicker = 'Projet · Communication & contenu';
     else if (path.includes('/projets')) kicker = 'Projets universitaires';
     else if (path.includes('/experiences/gazelle')) kicker = 'Stage · Agence Gazelle';
     else if (path.includes('/experiences')) kicker = 'Expériences professionnelles';
+    else if (path.includes('/creations/youtube')) kicker = 'Créations · Chaîne YouTube';
+    else if (path.includes('/creations/montage')) kicker = 'Créations · Montage & réseaux';
     else if (path.includes('/creations')) kicker = 'Créations personnelles';
     else if (path.includes('/contact')) kicker = 'Contact';
 

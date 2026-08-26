@@ -136,7 +136,12 @@
       "Bash(avconvert --start 58 --duration 1 --preset Preset960x540 --source escape_src.mov --output /tmp/escape_frame.mp4 --replace)",
       "Bash(qlmanage -t -s 1200 -o /tmp/frame60/ \"/tmp/escape_frame.mp4\")",
       "Bash(mkdir -p /tmp/frame60)",
-      "Bash(mkdir -p *)"
+      "Bash(mkdir -p *)",
+      "Bash(git -C /Users/noah/Documents/perso/site log -p -1 -- modern.js)",
+      "Bash(xargs sed -i '' 's/modern\\\\.js?v=9/modern.js?v=10/g')",
+      "Bash(git commit *)",
+      "Read(//Users/noah/Documents/perso/Short Maé/rendu/**)",
+      "Read(//Users/noah/Documents/perso/youtube/miniature/**)"
     ]
   }
 }

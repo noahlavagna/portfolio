@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betwork — Noah Lavagna</title>
+  <meta name="description" content="Betwork, l'application qui aide les étudiants à réviser en mettant leur argent en jeu. Communication et création de contenu vertical par Noah Lavagna.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Betwork — Noah Lavagna">
+  <meta property="og:description" content="L'application qui aide les étudiants à réviser en mettant leur argent en jeu. Communication et création de contenu vertical.">
+  <meta property="og:image" content="../../assets/images/og-preview.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Betwork — Noah Lavagna">
+  <meta name="twitter:description" content="Communication et création de contenu vertical pour une application étudiante.">
+  <meta name="twitter:image" content="../../assets/images/og-preview.jpg">
+  <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+  <link rel="icon" type="image/png" href="../../assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/apple-touch-icon-180.png">
+  <link rel="apple-touch-icon" sizes="167x167" href="../../assets/images/apple-touch-icon-167.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../../assets/images/apple-touch-icon-152.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../../assets/images/apple-touch-icon-120.png">
+  <meta name="apple-mobile-web-app-title" content="Noah Lavagna">
+  <link rel="stylesheet" href="../../style.css?v=29">
+  <link rel="stylesheet" href="../../modern.css?v=30">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@400;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+  <style>
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 1.4rem;
+      margin-top: 1.6rem;
+    }
+    .short-card { display: flex; flex-direction: column; gap: .7rem; }
+    .short-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0a0705;
+      box-shadow: 0 18px 44px rgba(0,0,0,.20);
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+    }
+    .short-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #0a0705;
+    }
+    /* En plein écran, on garde l'image entière au lieu de la rogner */
+    .short-frame video:fullscreen {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+    .short-frame video:-webkit-full-screen {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+    .short-caption {
+      font-family: var(--font-heading, 'Space Grotesk'), sans-serif;
+      font-size: .78rem;
+      letter-spacing: .06em;
+      line-height: 1.4;
+      color: var(--text-light, #5a5549);
+    }
+    .short-caption strong {
+      display: block;
+      font-size: .7rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent, #c44d2b);
+      margin-bottom: .2rem;
+    }
+    .bet-rule {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.6rem;
+    }
+    .bet-rule-item {
+      padding: 1.3rem 1.4rem;
+      border-radius: 14px;
+      background: rgba(0,0,0,.035);
+      border: 1px solid rgba(0,0,0,.07);
+    }
+    .bet-rule-item span {
+      display: block;
+      font-family: var(--font-heading, 'Space Grotesk'), sans-serif;
+      font-size: .7rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent, #c44d2b);
+      margin-bottom: .5rem;
+    }
+    .bet-rule-item p { margin: 0; font-size: .94rem; line-height: 1.6; }
+    [data-theme="dark"] .bet-rule-item { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.09); }
+    @media (max-width: 520px) {
+      .shorts-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    }
+  </style>
+  <script src="../../favicon-anim.js?v=1" defer></script>
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script>
+    try {
+      if (document.referrer && new URL(document.referrer).origin === location.origin) {
+        document.documentElement.classList.add('mp-internal-nav');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="../../" class="nav-logo" aria-label="Accueil Noah Lavagna">
+      <picture><source srcset="../../assets/images/noah.webp" type="image/webp"><img src="../../assets/images/noah.jpg" alt="Noah Lavagna"></picture>
+    </a>
+    <div class="nav-links">
+      <a href="../../">Accueil</a>
+      <div class="nav-dropdown"><a href="../../projets/" class="nav-active" data-nav-trigger>Projets <span class="nav-caret" aria-hidden="true">▾</span></a><div class="nav-dropdown-menu" role="menu"><a href="../../projets/" role="menuitem">Tous les projets</a><a href="../../projets/#cat-communication" role="menuitem">Communication</a><a href="../../projets/#cat-marketing" role="menuitem">Marketing</a><a href="../../projets/#cat-vente" role="menuitem">Vente</a></div></div>
+      <a href="../../experiences/">Expériences</a>
+      <div class="nav-dropdown"><a href="../../creations/" data-nav-trigger>Créations <span class="nav-caret" aria-hidden="true">▾</span></a><div class="nav-dropdown-menu" role="menu"><a href="../../creations/" role="menuitem">Toutes mes créations</a><a href="../../creations/youtube/" role="menuitem">Chaîne YouTube</a><a href="../../creations/montage/" role="menuitem">Montage &amp; réseaux</a></div></div>
+      <a href="../../#contact">Contact</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu">
+    <a href="../../">Accueil</a>
+    <a href="../../projets/">Projets</a>
+    <a href="../../projets/#cat-communication" class="mobile-sub">— Communication</a>
+    <a href="../../projets/#cat-marketing" class="mobile-sub">— Marketing</a>
+    <a href="../../projets/#cat-vente" class="mobile-sub">— Vente</a>
+    <a href="../../experiences/">Expériences</a>
+    <a href="../../creations/">Créations</a>
+    <a href="../../creations/youtube/" class="mobile-sub">— Chaîne YouTube</a>
+    <a href="../../creations/montage/" class="mobile-sub">— Montage &amp; réseaux</a>
+    <a href="../../#contact">Contact</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <a href="../" class="back-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour aux projets
+      </a>
+      <div class="page-hero-label">06</div>
+      <h1 class="page-hero-title inline-reveal">Bet<span class="light">work</span></h1>
+      <p class="page-hero-desc">L'application qui aide les étudiants à réviser en mettant leur argent en jeu. Communication et création de contenu vertical.</p>
+      <div class="page-hero-accent"></div>
+    </div>
+  </section>
+
+  <!-- Le projet -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label" data-reveal>Le projet</div>
+      <div class="project-card" data-reveal>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Tout le monde connaît le problème : on s'installe pour réviser, et le téléphone gagne. <strong>Betwork</strong> renverse la logique en transformant la concentration en <strong>enjeu concret</strong>.</p>
+            <p>Le principe est simple. L'étudiant <strong>mise une somme de départ</strong> et lance une session de travail d'une durée choisie. S'il <strong>touche son téléphone avant la fin</strong>, il perd une partie de sa mise. S'il tient jusqu'au bout, <strong>il récupère tout</strong>. Le risque monétaire remplace la motivation qui manque, et rend la discipline mesurable.</p>
+          </div>
+          <div class="bet-rule">
+            <div class="bet-rule-item">
+              <span>01 · La mise</span>
+              <p>L'étudiant dépose une mise de départ et choisit la durée de sa session de révision.</p>
+            </div>
+            <div class="bet-rule-item">
+              <span>02 · La règle</span>
+              <p>Toucher son téléphone pendant la session coûte une partie de la mise. Le compteur tourne.</p>
+            </div>
+            <div class="bet-rule-item">
+              <span>03 · Le gain</span>
+              <p>Session terminée sans craquer, la mise est conservée intégralement. La concentration paie.</p>
+            </div>
+          </div>
+          <div class="stage-skills">
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <span>Communication</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+              </div>
+              <span>TikTok &amp; Shorts</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <span>Stratégie de contenu</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <span>Montage vidéo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Le déroulé -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-label" data-reveal>Mon rôle</div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">01</span>
+          <h3 class="project-title">La communication</h3>
+          <span class="project-type">Ma mission principale</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Sur Betwork, je me suis chargé de la <strong>communication</strong> : comment présenter une application dont le concept demande dix secondes d'explication, à un public qui en accorde trois.</p>
+            <p>La réponse ne pouvait pas être une démonstration produit. Il fallait <strong>montrer le problème avant de montrer la solution</strong> : partir de la situation que tout étudiant reconnaît, la procrastination, le téléphone qui gagne, et laisser l'application arriver comme la chute.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">02</span>
+          <h3 class="project-title">Le parti pris créatif</h3>
+          <span class="project-type">Format POV</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>J'ai choisi le format <strong>POV</strong>, un code natif de TikTok, immédiatement lisible par la cible étudiante. Chaque vidéo pose une situation banale, « POV tu te balades devant l'IUT », « POV tu t'arrêtes à un feu », et bascule sur la punchline : <em>t'utilises pas Betwork</em>.</p>
+            <p>Le dispositif est volontairement <strong>léger et brut</strong> : tournage à l'iPhone sur le campus et aux alentours, sous-titres animés, montage nerveux, aucune fioriture. C'est ce qui rend le contenu crédible sur la plateforme, là où une production trop léchée se ferait scroller.</p>
+            <p>Le tournage a été mené <strong>avec les étudiants eux-mêmes</strong>, dans les lieux qu'ils fréquentent au quotidien. Un ancrage local qui donne à la série son ton juste.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">03</span>
+          <h3 class="project-title">Les contenus</h3>
+          <span class="project-type">8 vidéos verticales</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Huit vidéos verticales, écrites, tournées et montées pour TikTok et YouTube Shorts. Chacune tient en <strong>moins de trente secondes</strong> et fonctionne seule, tout en construisant une série reconnaissable d'une vidéo à l'autre.</p>
+          </div>
+          <div class="shorts-grid">
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-01.jpg">
+                  <source src="../../assets/video/shorts/betwork-01.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 01</strong>T’as eu contrôle de droit</p>
+            </div>
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-02.jpg">
+                  <source src="../../assets/video/shorts/betwork-02.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 02</strong>Tu veux rentrer à l'IUT</p>
+            </div>
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-03.jpg">
+                  <source src="../../assets/video/shorts/betwork-03.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 03</strong>Tu te balades devant l'IUT</p>
+            </div>
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-04.jpg">
+                  <source src="../../assets/video/shorts/betwork-04.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 04</strong>T'utilises pas Betwork</p>
+            </div>
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-05.jpg">
+                  <source src="../../assets/video/shorts/betwork-05.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 05</strong>Sortie de cours</p>
+            </div>
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-06.jpg">
+                  <source src="../../assets/video/shorts/betwork-06.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 06</strong>Tu te balades tranquille</p>
+            </div>
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-07.jpg">
+                  <source src="../../assets/video/shorts/betwork-07.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 07</strong>Tu t'arrêtes à un feu</p>
+            </div>
+            <div class="short-card" data-reveal>
+              <div class="short-frame">
+                <video controls playsinline preload="none" poster="../../assets/images/shorts/betwork-08.jpg">
+                  <source src="../../assets/video/shorts/betwork-08.mp4" type="video/mp4">
+                  Votre navigateur ne peut pas lire cette vidéo.
+                </video>
+              </div>
+              <p class="short-caption"><strong>POV 08</strong>Le point de vue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-reveal>
+        <div class="project-header">
+          <span class="project-number">04</span>
+          <h3 class="project-title">Ce que j'en retire</h3>
+          <span class="project-type">Bilan</span>
+        </div>
+        <div class="project-body">
+          <div class="project-description">
+            <p>Betwork m'a fait travailler la communication sous sa forme la plus exigeante : <strong>un message, trois secondes, une plateforme qui ne pardonne rien</strong>. Il a fallu penser en série plutôt qu'en vidéo isolée, tenir une ligne éditoriale, et accepter que la meilleure idée soit celle qui se comprend sans son.</p>
+            <p>C'est aussi un projet où j'ai occupé toute la chaîne : <strong>concept, écriture, tournage, montage, diffusion</strong>. Exactement le type de polyvalence que je cherche à mettre au service d'une équipe.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Noah Lavagna &copy; 2026</p>
+    </div>
+  </footer>
+
+  <script>
+    // Filet de sécurité : certains navigateurs n'appliquent pas :fullscreen au <video>.
+    // On force l'image entière (contain) sur la vidéo passée en plein écran.
+    (function () {
+      var apply = function () {
+        var fs = document.fullscreenElement || document.webkitFullscreenElement;
+        document.querySelectorAll('.short-frame video').forEach(function (v) {
+          v.style.objectFit = (v === fs) ? 'contain' : '';
+        });
+      };
+      document.addEventListener('fullscreenchange', apply);
+      document.addEventListener('webkitfullscreenchange', apply);
+    })();
+  </script>
+  <script src="../../page-transition.js?v=4" defer></script>
+  <script src="../../vinyl-audio.js?v=3" defer></script>
+  <script src="../../page.js?v=5" defer></script>
+  <script src="../../modern.js?v=11" defer></script>
+</body>
+</html>
